@@ -1,6 +1,6 @@
 <?php
 
-namespace Artwork\Core\Database\Models;
+namespace Flyff\Core\Database\Models;
 
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

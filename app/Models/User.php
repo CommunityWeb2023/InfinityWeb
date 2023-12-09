@@ -9,12 +9,13 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use function Termwind\render;
 
 class User extends Authenticatable
 {
     use HasApiTokens;
     use HasFactory;
-    use HasProfilePhoto;
+    //use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
 
@@ -58,4 +59,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getProfilePhotoUrlAttribute(): string
+    {
+        return 'https://ui-avatars.com/api/?name='. $this->username[0] .'&color=7F9CF5&background=EBF4FF';
+    }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Artwork\Core\Database\Repository;
+namespace Flyff\Core\Database\Repository;
 
-use Artwork\Core\Database\Models\Model;
+use Flyff\Core\Database\Models\Model;
 
 abstract class BaseRepository
 {
