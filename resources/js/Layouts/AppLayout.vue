@@ -22,15 +22,18 @@ const switchToTeam = (team) => {
 };
 
 const logout = () => {
-    router.post(route('logout'));
+    router.post(route('logout'), {
+    }, {
+        preserveState: false,
+    });
 };
 import { defineComponent, h } from 'vue'
 
 const navigation = [
-    { name: 'Home', href: route('home'), current: route().current('home') },
-    { name: 'Ranking', href: '#', current: false },
-    { name: 'Discord', href: '#', current: false },
-    { name: 'Register', href: route('register'), current: route().current('register') },
+    { name: 'Home', href: route('home'), current: route().current('home'), active: true },
+    { name: 'Ranking', href: '#', current: false, active: true },
+    { name: 'Discord', href: '#', current: false, active: true },
+    { name: 'Register', href: route('register'), current: route().current('register'), active: !usePage().props.auth.user },
 ]
 
 const solutions = [
@@ -140,11 +143,11 @@ const mobileMenuOpen = ref(false)
 
 <template>
     <div class="bg-[url('/storage/images/flyff-example.jpeg')] bg-top bg-no-repeat">
-        <header class="bg-gray-950/50 sticky top-0 uppercase shadow-lg">
+        <header class="bg-gray-950/50 sticky top-0 uppercase shadow-lg z-50">
             <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
                 <div class="flex flex-1">
                     <div class="hidden lg:flex lg:gap-x-12">
-                        <a v-for="item in navigation" :key="item.name" :href="item.href" class="text-sm font-semibold leading-6 text-white" :class="item.current ? '!font-extrabold !text-indigo-200 border-b border-indigo-200' : ''">{{ item.name }}</a>
+                        <a v-for="item in navigation" :key="item.name" :href="item.href" v-show="item.active" class="text-sm font-semibold leading-6 text-white" :class="item.current ? '!font-extrabold !text-indigo-200 border-b border-indigo-200' : ''">{{ item.name }}</a>
                     </div>
                     <div class="flex lg:hidden">
                         <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = true">
