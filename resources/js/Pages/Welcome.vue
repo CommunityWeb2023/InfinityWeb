@@ -1,7 +1,6 @@
 <script setup>
-import { Head, Link } from '@inertiajs/vue3';
+import { Head } from '@inertiajs/vue3';
 import AppLayout from "@/Layouts/AppLayout.vue";
-import StandardCard from "@/Components/StandardCard.vue";
 import Sidebar from "@/Layouts/Components/Sidebar.vue";
 import PostCard from "@/Pages/News/Components/PostCard.vue";
 
@@ -17,13 +16,14 @@ defineProps({
         <template #main>
             <Head title="Welcome" />
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-4  place-items-center">
-                <div v-for="post in posts" class="col-start-auto ">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-4">
+                <div v-for="post in posts" :key="post.id" >
                     <a href="" class="group">
-                        <PostCard :post="post" class="group-hover:shadow-lg ease-in-out transition-all duration-300" />
+                        <PostCard :post="post" :key="post.id" class="group-hover:shadow-lg group-hover:ease-in-out group-hover:transition-all group-hover:duration-300" />
                     </a>
                 </div>
             </div>
+
 
         </template>
 
