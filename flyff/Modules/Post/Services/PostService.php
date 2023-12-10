@@ -15,7 +15,12 @@ class PostService
     ){}
 
 
-    public function getPosts()
+    public function getPosts(): array
+    {
+        return PostIndexResource::collection($this->postRepository->published()->take(6))->resolve();
+    }
+
+    public function getAllPosts(): array
     {
         return PostIndexResource::collection($this->postRepository->published())->resolve();
     }

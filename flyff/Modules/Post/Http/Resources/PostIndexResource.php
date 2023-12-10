@@ -8,7 +8,7 @@ use Illuminate\Support\Carbon;
 
 class PostIndexResource extends JsonResource
 {
-    public static $wrap = 'post';
+    public static $wrap = null;
 
     /**
      * Transform the resource into an array.
@@ -24,6 +24,8 @@ class PostIndexResource extends JsonResource
             'category' => $this->category->name,
             'image' => $this->image,
             'content' => $this->content,
+            'author' => $this->user->username,
+            'author_image' => $this->user->profile_photo_url,
         ];
     }
 }
