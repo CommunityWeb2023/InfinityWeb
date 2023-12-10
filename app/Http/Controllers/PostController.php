@@ -19,7 +19,7 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): \Inertia\Response
     {
         //dd($this->postService->getPosts());
         return Inertia::render('Welcome', [
@@ -38,7 +38,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PostCreateRequest $postCreateRequest)
+    public function store(PostCreateRequest $postCreateRequest): void
     {
         $this->postService->createPost($postCreateRequest->validated());
     }
@@ -48,7 +48,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return Inertia::render('Post/Show', [
+            'post' => new PostIndexResource($post)
+        ]);
     }
 
     /**
@@ -73,5 +75,12 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    public function all(): \Inertia\Response
+    {
+        return Inertia::render('Post/All', [
+            'posts' => $this->postService->getAllPosts()
+        ]);
     }
 }

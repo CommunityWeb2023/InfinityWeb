@@ -30,9 +30,7 @@ const submit = () => {
     <Head title="Reset Password" />
 
     <AuthenticationCard>
-        <template #logo>
-            <AuthenticationCardLogo />
-        </template>
+
 
         <form @submit.prevent="submit">
             <div>

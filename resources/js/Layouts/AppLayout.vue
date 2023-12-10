@@ -18,6 +18,7 @@ const logout = () => {
     });
 };
 import { defineComponent, h } from 'vue'
+import Sidebar from "@/Layouts/Components/Sidebar.vue";
 
 const navigation = [
     { name: 'Home', href: route('home'), current: route().current('home'), active: true },
@@ -193,13 +194,14 @@ const mobileMenuOpen = ref(false)
         </div>
 
         <!-- Main -->
-        <main class="container mx-auto max-w-7xl min-h-screen">
-            <div class="grid grid-cols-1 md:grid-cols-6 grid-rows-1 gap-4">
-                <div class="" :class="!hasSidebar ? 'col-span-full' : 'md:col-span-4 col-span-1'">
-                    <slot name="main" />
+        <main class="container mx-auto max-w-7xl min-h-screen px-4 xl:px-0">
+
+            <div class="grid grid-cols-1 grid-rows-5 gap-4 md:grid-cols-2 lg:grid-cols-7">
+                <div :class="!hasSidebar ? 'col-span-full' : 'col-span-5 row-span-5'">
+                    <slot/>
                 </div>
-                <div class="md:col-span-2 md:col-start-5 col-span-1" v-if="hasSidebar">
-                    <slot name="sidebar" />
+                <div class="col-span-full md:col-span-full lg:col-span-2 xl:row-span-5 lg:col-start-6" v-if="hasSidebar">
+                    <Sidebar />
                 </div>
             </div>
         </main>
@@ -207,7 +209,7 @@ const mobileMenuOpen = ref(false)
 
 
 
-    <footer class="bg-gray-900" aria-labelledby="footer-heading">
+    <footer class="bg-gray-900 mt-5" aria-labelledby="footer-heading">
         <h2 id="footer-heading" class="sr-only">Footer</h2>
         <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
             <div class="xl:grid xl:grid-cols-3 xl:gap-8">

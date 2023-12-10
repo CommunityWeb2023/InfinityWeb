@@ -38,6 +38,7 @@ class HandleInertiaRequests extends Middleware
     {
         return array_merge(parent::share($request), [
             'server_name' => config('app.name'),
+            'isDemo' => config('app.demo'),
             'penya' => config('flyff.penya'),
             'exp' => config('flyff.exp'),
             'drop' => config('flyff.drop'),
