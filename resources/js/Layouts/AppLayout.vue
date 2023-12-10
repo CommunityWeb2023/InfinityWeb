@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue';
-import {Head, Link, router, usePage} from '@inertiajs/vue3';
+import {router, usePage} from '@inertiajs/vue3';
 import {Dialog, DialogPanel} from "@headlessui/vue";
 import {Bars3Icon, XMarkIcon} from "@heroicons/vue/24/outline/index.js";
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
@@ -10,16 +10,6 @@ defineProps({
     title: String,
     hasSidebar: Boolean,
 });
-
-const showingNavigationDropdown = ref(false);
-
-const switchToTeam = (team) => {
-    router.put(route('current-team.update'), {
-        team_id: team.id,
-    }, {
-        preserveState: false,
-    });
-};
 
 const logout = () => {
     router.post(route('logout'), {

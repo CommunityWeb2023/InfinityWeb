@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Flyff\Modules\Post\Http\Requests\PostCreateRequest;
+use Flyff\Modules\Post\Http\Resources\PostIndexResource;
 use Flyff\Modules\Post\Models\Post;
 use Flyff\Modules\Post\Services\PostService;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
+        //dd($this->postService->getPosts());
         return Inertia::render('Welcome', [
             'posts' => $this->postService->getPosts()
         ]);
