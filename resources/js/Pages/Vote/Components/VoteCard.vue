@@ -14,7 +14,7 @@ export default {
         voteUrl() {
             const url = this.vote.url;
             if (this.vote.need_username) {
-                return url + '?' + this.vote.url_parameter + '=' + usePage().props.auth.user.username + ', ' + this.vote.site;
+                return url + '&' + this.vote.url_parameter + '=' + usePage().props.auth.user.username + ', ' + this.vote.site;
             } else {
                 return url;
             }
