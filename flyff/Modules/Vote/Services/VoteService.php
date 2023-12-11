@@ -24,7 +24,7 @@ class VoteService
         $voteSite = $this->voteSettingService->findById($parameter[1]);
         $user = $this->userService->getUserByUsername($parameter[0]);
 
-        if($voteSite === 'GTOP100'){
+        if($voteSite->site === 'GTOP100'){
             if(!empty($voteSite->ping_back_key)){
                 if(!isset($data['pingbackkey'])){
                     return response()->json([
