@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+        <script type="text/javascript">
+            window.Laravel = {
+                csrfToken: "{{ csrf_token() }}",
+                jsPermissions: {!! auth()->check()?auth()->user()->jsPermissions():0 !!}
+            }
+        </script>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 

@@ -72,7 +72,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Berlin',
 
     /*
     |--------------------------------------------------------------------------
@@ -172,6 +172,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+        Spatie\Permission\PermissionServiceProvider::class,
+        \Torann\GeoIP\GeoIPServiceProvider::class,
     ])->toArray(),
 
     /*
@@ -186,7 +188,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        'GeoIP' => \Torann\GeoIP\Facades\GeoIP::class,
     ])->toArray(),
 
 ];

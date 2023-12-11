@@ -24,8 +24,9 @@ class PostCreateRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'published_at' => 'nullable|date',
+            'category' => 'required|exists:categories,id',
+            'image' => 'nullable',
         ];
     }
 }

@@ -19,11 +19,15 @@ class AuthSeed extends Seeder
             'password' => bcrypt('Password1234!?'),
         ]);
 
+        $admin->assignRole('administrator');
+
         $gameMaster = User::create([
             'username' => 'GameMaster',
             'email' => 'gamemaster@community-web.eu',
             'password' => bcrypt('Password1234!?'),
         ]);
+
+        $gameMaster->assignRole('game_master');
 
         $support = User::create([
             'username' => 'Support',
@@ -31,10 +35,14 @@ class AuthSeed extends Seeder
             'password' => bcrypt('Password1234!?'),
         ]);
 
+        $support->assignRole('support');
+
         $user = User::create([
             'username' => 'User',
             'email' => 'user@community-web.eu',
             'password' => bcrypt('Password1234!?'),
         ]);
+
+        $user->assignRole('user');
     }
 }

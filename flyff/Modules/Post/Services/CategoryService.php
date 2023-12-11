@@ -13,6 +13,11 @@ class CategoryService
     )
     {}
 
+    public function getCategories(): \Illuminate\Database\Eloquent\Collection
+    {
+        return $this->postCategoryRepository->all();
+    }
+
     public function create($data): Category|Model
     {
         $postCategory = new Category();

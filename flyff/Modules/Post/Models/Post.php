@@ -4,12 +4,15 @@ namespace Flyff\Modules\Post\Models;
 
 use Flyff\Core\Database\Models\Model;
 use Flyff\Modules\User\Models\BelongsToUser;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
     use HasFactory;
     use BelongsToUser;
+    use BelongsToCategory;
 
     protected $fillable = [
         'category_id',
@@ -24,20 +27,39 @@ class Post extends Model
         'user', 'category'
     ];
 
-
-    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
-    {
-        return $this->belongsTo(Category::class, 'category_id', 'id', 'category');
-    }
-
     protected $dates = [
         'published_at'
     ];
 
-    public function scopePublished($query)
+    protected $appends = [
+        'image_path', 'content_without_html'
+    ];
+
+    protected static $globalScopes = [
+        'published'
+    ];
+
+
+    public function scopePublished(Builder $query): void
     {
-        return $query->whereNotNull('published_at')->where('published_at', '<=', now());
+        $query->whereNotNull('published_at')->where('published_at', '<=', now());
     }
+
+    public function scopeOrderByPublishedAtDesc(Builder $query): void
+    {
+        $query->orderBy('published_at', 'desc');
+    }
+
+    public function getImagePathAttribute()
+    {
+        return Storage::url('post_image/' . $this->image);
+    }
+
+    public function getContentWithoutHtmlAttribute()
+    {
+        return strip_tags($this->content);
+    }
+
 
 
 }

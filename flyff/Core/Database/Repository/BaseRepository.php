@@ -11,4 +11,10 @@ abstract class BaseRepository
         $model->save();
         return $model;
     }
+
+    public function delete(Model $model): void
+    {
+        $model->delete();
+    }
+
 }

@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -12,8 +11,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        $isDemo = config('app.demo');
+
+        $this->call(RoleAndPermissionSeed::class);
         $this->call(PostCategorySeed::class);
-        $this->call(AuthSeed::class);
-        $this->call(ContentSeed::class);
+
+        if ( $isDemo ){
+            $this->call(AuthSeed::class);
+            $this->call(ContentSeed::class);
+            $this->call(VoteSettingSeed::class);
+        }
+
     }
 }

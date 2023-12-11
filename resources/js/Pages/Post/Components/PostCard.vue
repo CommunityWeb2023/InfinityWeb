@@ -15,9 +15,9 @@ export default {
 <template>
     <div class="bg-white rounded-lg shadow-md">
         <div class="relative overflow-hidden">
-            <img :src="post.image" class=" h-48 w-full object-cover group-hover:scale-125 transition ease-in-out duration-300 group-hover:opacity-75" alt="" >
+            <img :src="post.image_path" class=" h-48 w-full object-cover group-hover:scale-125 transition ease-in-out duration-300 group-hover:opacity-75" alt="" >
         </div>
-        <div class="border border-gray-50" :class="!post.image ? 'rounded-t-lg' : ''">
+        <div class="border border-gray-50" :class="!post.image_path ? 'rounded-t-lg' : ''">
             <div class="border-b border-gray-300 border-dashed py-2.5 px-4">
                 <h2 class="font-semibold">
                     {{ post.title }}
@@ -25,7 +25,7 @@ export default {
             </div>
             <div class="p-5">
                 <div class="text-sm min-h-[120px]">
-                    {{ String.prototype.substring.call(post.content, 0, 150) }} ...
+                    {{ String.prototype.substring.call(post.content_without_html, 0, 150) }} ...
                 </div>
             </div>
             <div class="border-t border-gray-300 border-dashed py-2.5 px-4">

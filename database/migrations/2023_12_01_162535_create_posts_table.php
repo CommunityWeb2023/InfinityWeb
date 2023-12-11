@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedInteger('category_id')->constrained()->onDelete('cascade');
             $table->string('title');
             $table->text('content');
-            $table->string('image')->nullable();
+            $table->string('image')->default('BasicNewsImage.png');
             $table->dateTime('published_at')->default(now());
             $table->timestamps();
         });

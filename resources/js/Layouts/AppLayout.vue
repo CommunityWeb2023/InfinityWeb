@@ -20,6 +20,8 @@ const logout = () => {
 import { defineComponent, h } from 'vue'
 import Sidebar from "@/Layouts/Components/Sidebar.vue";
 
+
+
 const navigation = [
     { name: 'Home', href: route('home'), current: route().current('home'), active: true },
     { name: 'Ranking', href: '#', current: false, active: true },
@@ -29,7 +31,7 @@ const navigation = [
 
 const solutions = [
     { name: 'Profile', href: '#' },
-    { name: 'Vote for Us', href: '#' },
+    { name: 'Vote for Us', href: route('vote.index') },
     { name: 'Donate', href: '#' },
     { name: 'Shop', href: '#' },
     { name: 'Logout', href: '#', click: logout, classList: '!text-red-500' },
@@ -159,8 +161,10 @@ const mobileMenuOpen = ref(false)
                         <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
                             <PopoverPanel class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-min -translate-x-1/2 px-4">
                                 <div class="w-56 shrink rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-0">
+                                    <a :href="route('dashboard')" v-if="can('view dashboard')" class="text-red-500 block p-2 hover:text-red-600" >Dashboard</a>
                                     <a v-for="item in solutions" :key="item.name" :href="item.href" @click="item.click()" class="block p-2 hover:text-indigo-600" :class="item.classList">{{ item.name }}</a>
                                 </div>
+
                             </PopoverPanel>
                         </transition>
                     </Popover>
@@ -206,7 +210,6 @@ const mobileMenuOpen = ref(false)
             </div>
         </main>
     </div>
-
 
 
     <footer class="bg-gray-900 mt-5" aria-labelledby="footer-heading">

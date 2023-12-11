@@ -21,9 +21,9 @@ export default {
     </div>
     <div class="bg-white rounded-lg shadow-md">
         <div class="relative overflow-hidden">
-            <img :src="post.image" class="rounded-t-lg h-48 w-full object-cover group-hover:scale-125 group-hover:transition group-hover:ease-in-out group-hover:duration-300 group-hover:opacity-75" alt="" >
+            <img :src="post.image_path" class="rounded-t-lg h-48 w-full object-cover group-hover:scale-125 group-hover:transition group-hover:ease-in-out group-hover:duration-300 group-hover:opacity-75" alt="" >
         </div>
-        <div class="border border-gray-50" :class="!post.image ? 'rounded-t-lg' : ''">
+        <div class="border border-gray-50" :class="!post.image_path ? 'rounded-t-lg' : ''">
             <div class="border-b border-gray-300 border-dashed py-2.5 px-4">
                 <h2 class="font-semibold">
                     {{ post.title }}
