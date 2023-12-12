@@ -22,6 +22,7 @@
         "@headlessui/vue": "^1.7.16",
         "@heroicons/vue": "^2.0.18",
         "@vueup/vue-quill": "^1.2.0",
+        "@vueuse/core": "^10.7.0",
         "laravel-permission-to-vuejs": "^3.0.2"
     }
 }

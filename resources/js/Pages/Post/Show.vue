@@ -12,9 +12,7 @@ export default {
 
 <template>
     <AppLayout :has-sidebar="false">
-
-
-        <ShowPostCard :post="post" class="group-hover:shadow-lg group-hover:ease-in-out group-hover:transition-all group-hover:duration-300" />
+        <ShowPostCard :post="post" />
     </AppLayout>
 </template>
 

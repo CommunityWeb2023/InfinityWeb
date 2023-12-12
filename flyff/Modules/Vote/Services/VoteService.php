@@ -7,6 +7,7 @@ use Flyff\Modules\User\Services\UserService;
 use Flyff\Modules\Vote\Models\Vote;
 use Flyff\Modules\Vote\Repositories\VoteRepository;
 use \Flyff\Modules\Vote\Repositories\VoteSettingRepository;
+use Illuminate\Support\Facades\Log;
 
 
 class VoteService
@@ -18,9 +19,10 @@ class VoteService
     ){}
 
 
-    public function storeVote(array $data)
+    public function storeVote(array $data): \Illuminate\Http\JsonResponse
     {
         $parameter = explode(',' , $data['pingUsername']);
+
         $voteSite = $this->voteSettingService->findById($parameter[1]);
         $user = $this->userService->getUserByUsername($parameter[0]);
 
@@ -55,6 +57,11 @@ class VoteService
             }
         }
 
+        Log::info('Vote: ' . $data['pingUsername'] . ' ' . $data['Successful'] . ' ' . $data['VoterIP'] . ' ' . $data['Reason']);
 
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Vote successfully saved'
+        ], 200);
     }
 }

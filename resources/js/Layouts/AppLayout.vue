@@ -199,9 +199,8 @@ const mobileMenuOpen = ref(false)
 
         <!-- Main -->
         <main class="container mx-auto max-w-7xl min-h-screen px-4 xl:px-0">
-
-            <div class="grid grid-cols-1 grid-rows-5 gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <div :class="!hasSidebar ? 'col-span-full' : 'col-span-5 row-span-5'">
+            <div class="" :class="!hasSidebar ? 'w-full' : 'grid grid-cols-1 grid-rows-5 gap-4 md:grid-cols-2 lg:grid-cols-7'">
+                <div :class="!hasSidebar ? '' : 'col-span-5 row-span-5'">
                     <slot/>
                 </div>
                 <div class="col-span-full md:col-span-full lg:col-span-2 xl:row-span-5 lg:col-start-6" v-if="hasSidebar">

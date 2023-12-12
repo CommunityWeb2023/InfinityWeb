@@ -28,6 +28,7 @@ class PostIndexResource extends JsonResource
             'author_image' => $this->user->profile_photo_url,
             'image_path' => $this->image_path,
             'content_without_html' => $this->content_without_html,
+            'time_to_read' => $this->time_to_read,
         ];
     }
 }

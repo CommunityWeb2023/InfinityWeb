@@ -39,9 +39,9 @@ class VoteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(PingBackVoteRequest $request)
+    public function store(PingBackVoteRequest $request): \Illuminate\Http\JsonResponse
     {
-        $this->voteService->storeVote($request->validated());
+        return $this->voteService->storeVote($request->validated());
     }
 
     /**
