@@ -20,4 +20,10 @@ class UserService
     {
         $this->userRepository->saveUser($user);
     }
+
+    public function increaseVotePoints(User $user, int $amount): void
+    {
+        $user->votepoints += $amount;
+        $this->userRepository->saveUser($user);
+    }
 }

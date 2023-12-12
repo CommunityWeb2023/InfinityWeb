@@ -23,7 +23,7 @@ class VoteService
     {
         $parameter = explode(',' , $data['pingUsername']);
 
-        Log::info('Vote: ' . $data['pingUsername'] . ' ' . $data['Successful'] . ' ' . $data['VoterIP'] . ' ' . $data['Reason'] . ' ' . $parameter[0] . ' ' . $parameter[1]);
+        //Log::info('Vote: ' . $data['pingUsername'] . ' ' . $data['Successful'] . ' ' . $data['VoterIP'] . ' ' . $data['Reason'] . ' ' . $parameter[0] . ' ' . $parameter[1]);
 
         $voteSite = $this->voteSettingService->findById(intval($parameter[1]));
         $user = $this->userService->getUserByUsername($parameter[0]);
@@ -52,14 +52,13 @@ class VoteService
             $vote->description = $data['Reason'];
             $this->voteRepository->save($vote);
 
-            if($data['Successful'] === VoteStateEnums::SUCCESS)
+            if((int)$data['Successful'] === VoteStateEnums::SUCCESS->value)
             {
-                $user->vote_points += $voteSite->votepoints;
-                $this->userService->update($user);
+                $this->userService->increaseVotePoints($user, $voteSite->votepoints);
             }
         }
 
-        Log::info('Vote: ' . $data['pingUsername'] . ' ' . $data['Successful'] . ' ' . $data['VoterIP'] . ' ' . $data['Reason']);
+        //Log::info('Vote: ' . $data['pingUsername'] . ' ' . $data['Successful'] . ' ' . $data['VoterIP'] . ' ' . $data['Reason']);
 
         return response()->json([
             'status' => 'success',
