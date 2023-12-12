@@ -23,6 +23,8 @@ class VoteService
     {
         $parameter = explode(',' , $data['pingUsername']);
 
+        Log::info('Vote: ' . $data['pingUsername'] . ' ' . $data['Successful'] . ' ' . $data['VoterIP'] . ' ' . $data['Reason'] . ' ' . $parameter[0] . ' ' . $parameter[1]);
+
         $voteSite = $this->voteSettingService->findById(intval($parameter[1]));
         $user = $this->userService->getUserByUsername($parameter[0]);
 
