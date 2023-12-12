@@ -23,7 +23,7 @@ class VoteService
     {
         $parameter = explode(',' , $data['pingUsername']);
 
-        $voteSite = $this->voteSettingService->findById($parameter[1]);
+        $voteSite = $this->voteSettingService->findById(intval($parameter[1]));
         $user = $this->userService->getUserByUsername($parameter[0]);
 
         if($voteSite->site === 'GTOP100'){
