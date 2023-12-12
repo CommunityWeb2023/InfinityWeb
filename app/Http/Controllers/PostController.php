@@ -68,7 +68,7 @@ class PostController extends Controller
         }
         $this->postService->createPost($postCreateRequest->validated(), $basename);
 
-        //return Inertia::location(route('post.index'));
+        return Inertia::location(route('post.index'));
     }
 
     /**

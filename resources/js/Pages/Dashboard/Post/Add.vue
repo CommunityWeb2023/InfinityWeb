@@ -156,10 +156,6 @@ export default {
                 </button>
             </div>
         </form>
-
-        <pre>
-            {{ newPost }}
-        </pre>
     </DashboardLayout>
 </template>
 
