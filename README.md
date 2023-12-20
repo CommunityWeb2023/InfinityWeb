@@ -1,7 +1,7 @@
 
 # Community Web 2023
 
-Our Discord: - [Community Web Discord](https://discord.gg/x9wCwQ6Dkn)
+Our Discord: - [Community Web Discord](https://discord.gg/Ww4ybKqEYT)
 
 
 ## DE:

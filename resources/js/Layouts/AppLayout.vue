@@ -209,8 +209,9 @@ onMounted(
             <!-- Hero -->
             <div class="mx-auto max-w-2xl py-32 sm:py-32 lg:py-56">
                 <div class="text-center">
-                    <h1 class="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">
+                    <h1 class="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl flex items-center justify-center">
                         <!-- Hero headline -->
+                        <img src="/storage/images/CommunityWebLogo.png" alt="" class="h-52 w-52">
                     </h1>
                 </div>
             </div>
