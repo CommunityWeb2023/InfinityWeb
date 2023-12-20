@@ -2,7 +2,9 @@
 
 namespace Database\Seeders;
 
+use Flyff\Modules\Post\Models\Category;
 use Flyff\Modules\Post\Models\Post;
+use Flyff\Modules\Shop\Models\ShopCategory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -33,5 +35,34 @@ class ContentSeed extends Seeder
                 'published_at' => now(),
             ]);
         }
+
+
+        ShopCategory::create([
+            'name' => 'CS Items',
+            'description' => 'Test Description',
+            'position' => 1,
+            'active' => true,
+        ]);
+
+        ShopCategory::create([
+            'name' => 'Accessories',
+            'description' => 'Test Description',
+            'position' => 1,
+            'active' => true,
+        ]);
+
+        ShopCategory::create([
+            'name' => 'Mounts',
+            'description' => 'Test Description',
+            'position' => 1,
+            'active' => true,
+        ]);
+
+        ShopCategory::create([
+            'name' => 'Pets',
+            'description' => 'Test Description',
+            'position' => 1,
+            'active' => true,
+        ]);
     }
 }

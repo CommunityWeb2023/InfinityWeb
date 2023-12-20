@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
 use LaravelAndVueJS\Traits\LaravelPermissionToVueJS;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -20,6 +21,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
     use LaravelPermissionToVueJS;
     use HasRoles;
+    use Searchable;
     /**
      * The attributes that are mass assignable.
      *
@@ -64,5 +66,18 @@ class User extends Authenticatable
     public function getProfilePhotoUrlAttribute(): string
     {
         return 'https://ui-avatars.com/api/?name='. $this->username[0] .'&color=7F9CF5&background=EBF4FF';
+    }
+
+    public function searchableAs()
+    {
+        return 'users_index';
+    }
+
+    public function toSearchableArray()
+    {
+        return [
+            'username' => $this->username,
+            'email' => $this->email,
+        ];
     }
 }

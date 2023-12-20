@@ -12,7 +12,6 @@ class VoteSetting extends Model
 
     protected $fillable = [
         'site',
-        'name',
         'description',
         'url',
         'image',

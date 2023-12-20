@@ -25,6 +25,13 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
     Route::group(['prefix' => 'vote'], function (){
         Route::get('/', [\App\Http\Controllers\VoteController::class, 'index'])->name('vote.index');
     });
+
+    Route::group(['prefix' => 'shop'], function (){
+        Route::get('/', [\App\Http\Controllers\ShopController::class, 'index'])->name('shop.index');
+        Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('shop.add.item.to.cart');
+        Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('shop.cart');
+        Route::delete('/cart/remove/{cart}', [\App\Http\Controllers\CartController::class, 'destroy'])->name('shop.remove.item.from.cart');
+    });
 });
 
 Route::group([
@@ -51,5 +58,33 @@ Route::group([
         Route::post('/update/{post}/image', [\App\Http\Controllers\PostController::class, 'updateImage'])->name('post.image.update');
         Route::delete('/destroy/{post}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('post.destroy');
     });
+
+    /*Route::group([
+        'prefix' => 'download'
+    ], function() {
+        Route::get('/', [\App\Http\Controllers\DownloadController::class, 'index'])->name('download.index');
+        Route::get('/create', [\App\Http\Controllers\DownloadController::class, 'create'])->name('download.create');
+        Route::post('/store', [\App\Http\Controllers\DownloadController::class, 'store'])->name('download.store');
+        Route::get('/edit/{download}', [\App\Http\Controllers\DownloadController::class, 'edit'])->name('download.edit');
+        Route::patch('/update/{download}', [\App\Http\Controllers\DownloadController::class, 'update'])->name('download.update');
+        Route::post('/update/{download}/image', [\App\Http\Controllers\DownloadController::class, 'updateImage'])->name('download.image.update');
+        Route::delete('/destroy/{download}', [\App\Http\Controllers\DownloadController::class, 'destroy'])->name('download.destroy');
+    });*/
+
+
+    Route::group(['prefix' => 'item'], function (){
+        Route::get('/', [\App\Http\Controllers\ItemController::class, 'index'])->name('item.index');
+        Route::get('/add/{item}', [\App\Http\Controllers\ShopItemController::class, 'create'])->name('item.create');
+        Route::post('/store', [\App\Http\Controllers\ShopItemController::class, 'store'])->name('item.store');
+        /*Route::get('/create', [\App\Http\Controllers\ItemController::class, 'create'])->name('item.create');
+        Route::post('/store', [\App\Http\Controllers\ItemController::class, 'store'])->name('item.store');
+        Route::get('/edit/{item}', [\App\Http\Controllers\ItemController::class, 'edit'])->name('item.edit');
+        Route::patch('/update/{item}', [\App\Http\Controllers\ItemController::class, 'update'])->name('item.update');
+        Route::delete('/destroy/{item}', [\App\Http\Controllers\ItemController::class, 'destroy'])->name('item.destroy');*/
+    });
+
+
+
+
 });
 

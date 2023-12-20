@@ -42,6 +42,9 @@ class HandleInertiaRequests extends Middleware
             'penya' => config('flyff.penya'),
             'exp' => config('flyff.exp'),
             'drop' => config('flyff.drop'),
+            'url_parameters' => [
+                'query' => $request->get('query') ?? ''
+            ],
         ]);
     }
 }

@@ -41,7 +41,7 @@ class VoteController extends Controller
      */
     public function store(PingBackVoteRequest $request): \Illuminate\Http\JsonResponse
     {
-        return $this->voteService->storeVote($request->validated());
+        return $this->voteService->checkVote($request->validated());
     }
 
     /**

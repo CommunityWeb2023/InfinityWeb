@@ -1,8 +1,8 @@
 <script setup>
-import { ref } from 'vue';
-import {router, usePage} from '@inertiajs/vue3';
+import {onMounted, ref} from 'vue';
+import {Head, router, usePage} from '@inertiajs/vue3';
 import {Dialog, DialogPanel} from "@headlessui/vue";
-import {Bars3Icon, XMarkIcon} from "@heroicons/vue/24/outline/index.js";
+import {Bars3Icon, XMarkIcon, ArrowPathIcon} from "@heroicons/vue/24/outline/index.js";
 import { Popover, PopoverButton, PopoverPanel } from '@headlessui/vue'
 import { ChevronDownIcon, UserCircleIcon } from '@heroicons/vue/20/solid'
 
@@ -33,7 +33,7 @@ const solutions = [
     { name: 'Profile', href: '#' },
     { name: 'Vote for Us', href: route('vote.index') },
     { name: 'Donate', href: '#' },
-    { name: 'Shop', href: '#' },
+    { name: 'Shop', href: route('shop.index') },
     { name: 'Logout', href: '#', click: logout, classList: '!text-red-500' },
 ]
 
@@ -132,142 +132,162 @@ const footerNavigation = {
 }
 
 const mobileMenuOpen = ref(false)
+const pageLoading = ref(true)
+
+onMounted(
+    () => {
+        setTimeout(() => {
+            pageLoading.value = false
+        }, 500)
+    }
+)
 </script>
 
 <template>
-    <div class="bg-[url('/storage/images/flyff-example.jpeg')] bg-top bg-no-repeat">
-        <header class="bg-gray-950/50 sticky top-0 uppercase shadow-lg z-50">
-            <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-                <div class="flex flex-1">
-                    <div class="hidden lg:flex lg:gap-x-12">
-                        <a v-for="item in navigation" :key="item.name" :href="item.href" v-show="item.active" class="text-sm font-semibold leading-6 text-white" :class="item.current ? '!font-extrabold !text-indigo-200 border-b border-indigo-200' : ''">{{ item.name }}</a>
-                    </div>
-                    <div class="flex lg:hidden">
-                        <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = true">
-                            <span class="sr-only">Open main menu</span>
-                            <Bars3Icon class="h-6 w-6" aria-hidden="true" />
-                        </button>
-                    </div>
-                </div>
-                <div class="flex flex-1 justify-end gap-4">
-                    <a :href="route('login')" v-if="!$page.props.auth.user" class="text-sm font-semibold leading-6 text-white" :class="route().current('login') ? '!font-extrabold !text-indigo-200 border-b border-indigo-200' : ''">Log in</a>
-                    <Popover class="relative" v-else>
-                        <PopoverButton class="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
-                            <UserCircleIcon class="h-5 w-5 text-white" aria-hidden="true" />
-                            {{ $page.props.auth.user.username }}
-                            <ChevronDownIcon class="h-5 w-5 text-white" aria-hidden="true" />
-                        </PopoverButton>
+    <Head :title="title" />
 
-                        <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
-                            <PopoverPanel class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-min -translate-x-1/2 px-4">
-                                <div class="w-56 shrink rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-0">
-                                    <a :href="route('dashboard')" v-if="can('view dashboard')" class="text-red-500 block p-2 hover:text-red-600" >Dashboard</a>
-                                    <a v-for="item in solutions" :key="item.name" :href="item.href" @click="item.click()" class="block p-2 hover:text-indigo-600" :class="item.classList">{{ item.name }}</a>
-                                </div>
+    <div v-if="pageLoading" class="fixed w-full h-full bg-gray-900/70 z-50 animate__animated animate__fadeIn animate__fadeOut">
+        <div class="flex items-center justify-center h-full">
+            <img src="/storage/images/CommunityWebLogo.png" class="w-52 h-52 animate__animated animate__fadeIn animate__fadeOut" alt="">
+        </div>
+    </div>
 
-                            </PopoverPanel>
-                        </transition>
-                    </Popover>
-                </div>
-            </nav>
-            <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
-                <div class="fixed inset-0 z-10" />
-                <DialogPanel class="fixed inset-y-0 left-0 z-10 w-full overflow-y-auto bg-white px-6 py-6">
-                    <div class="flex items-center justify-between">
-                        <div class="flex flex-1">
-                            <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
-                                <span class="sr-only">Close menu</span>
-                                <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+    <div>
+        <div class="bg-[url('/storage/images/flyff-example.jpeg')] bg-top bg-no-repeat">
+            <header class="bg-gray-950/50 sticky top-0 uppercase shadow-lg z-10">
+                <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+                    <div class="flex flex-1">
+                        <div class="hidden lg:flex lg:gap-x-12">
+                            <a v-for="item in navigation" :key="item.name" :href="item.href" v-show="item.active" class="text-sm font-semibold leading-6 text-white" :class="item.current ? '!font-extrabold !text-indigo-200 border-b border-indigo-200' : ''">{{ item.name }}</a>
+                        </div>
+                        <div class="flex lg:hidden">
+                            <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = true">
+                                <span class="sr-only">Open main menu</span>
+                                <Bars3Icon class="h-6 w-6" aria-hidden="true" />
                             </button>
                         </div>
                     </div>
-                    <div class="mt-6 space-y-2">
-                        <a v-for="item in navigation" :key="item.name" :href="item.href" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" :class="item.current ? '!font-extrabold' : ''">{{ item.name }}</a>
-                    </div>
-                </DialogPanel>
-            </Dialog>
-        </header>
+                    <div class="flex flex-1 justify-end gap-4">
+                        <a :href="route('login')" v-if="!$page.props.auth.user" class="text-sm font-semibold leading-6 text-white" :class="route().current('login') ? '!font-extrabold !text-indigo-200 border-b border-indigo-200' : ''">Log in</a>
+                        <Popover class="relative" v-else>
+                            <PopoverButton class="inline-flex items-center gap-x-1 text-sm font-semibold leading-6 text-white">
+                                <UserCircleIcon class="h-5 w-5 text-white" aria-hidden="true" />
+                                {{ $page.props.auth.user.username }}
+                                <ChevronDownIcon class="h-5 w-5 text-white" aria-hidden="true" />
+                            </PopoverButton>
 
-        <!-- Hero -->
-        <div class="mx-auto max-w-2xl py-32 sm:py-32 lg:py-56">
-            <div class="text-center">
-                <h1 class="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">
-                    <!-- Hero headline -->
-                </h1>
+                            <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
+                                <PopoverPanel class="absolute left-1/2 z-10 mt-5 flex w-screen max-w-min -translate-x-1/2 px-4">
+                                    <div class="w-56 shrink rounded-xl bg-white p-4 text-sm font-semibold leading-6 text-gray-900 shadow-lg ring-0">
+                                        <a :href="route('dashboard')" v-if="can('view dashboard')" class="text-red-500 block p-2 hover:text-red-600" >Dashboard</a>
+                                        <a v-for="item in solutions" :key="item.name" :href="item.href" @click="item.click()" class="block p-2 hover:text-indigo-600" :class="item.classList">{{ item.name }}</a>
+                                    </div>
+
+                                </PopoverPanel>
+                            </transition>
+                        </Popover>
+                    </div>
+                </nav>
+                <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+                    <div class="fixed inset-0 z-10" />
+                    <DialogPanel class="fixed inset-y-0 left-0 z-10 w-full overflow-y-auto bg-white px-6 py-6">
+                        <div class="flex items-center justify-between">
+                            <div class="flex flex-1">
+                                <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
+                                    <span class="sr-only">Close menu</span>
+                                    <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-6 space-y-2">
+                            <a v-for="item in navigation" :key="item.name" :href="item.href" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50" :class="item.current ? '!font-extrabold' : ''">{{ item.name }}</a>
+                        </div>
+                    </DialogPanel>
+                </Dialog>
+            </header>
+
+            <!-- Hero -->
+            <div class="mx-auto max-w-2xl py-32 sm:py-32 lg:py-56">
+                <div class="text-center">
+                    <h1 class="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl">
+                        <!-- Hero headline -->
+                    </h1>
+                </div>
             </div>
+
+            <!-- Main -->
+            <main class="container mx-auto max-w-7xl min-h-screen px-4 xl:px-0">
+                <div class="" :class="!hasSidebar ? 'w-full' : 'grid grid-cols-1 grid-rows-5 gap-4 md:grid-cols-2 lg:grid-cols-7'">
+                    <div :class="!hasSidebar ? '' : 'col-span-5 row-span-5'">
+                        <slot/>
+                    </div>
+                    <div class="col-span-full md:col-span-full lg:col-span-2 xl:row-span-5 lg:col-start-6" v-if="hasSidebar">
+                        <Sidebar />
+                    </div>
+                </div>
+            </main>
         </div>
 
-        <!-- Main -->
-        <main class="container mx-auto max-w-7xl min-h-screen px-4 xl:px-0">
-            <div class="" :class="!hasSidebar ? 'w-full' : 'grid grid-cols-1 grid-rows-5 gap-4 md:grid-cols-2 lg:grid-cols-7'">
-                <div :class="!hasSidebar ? '' : 'col-span-5 row-span-5'">
-                    <slot/>
+
+        <footer class="bg-gray-900 mt-5" aria-labelledby="footer-heading">
+            <h2 id="footer-heading" class="sr-only">Footer</h2>
+            <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
+                <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+                    <div class="space-y-8">
+                        <img class="h-7" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Company name" />
+                        <p class="text-sm leading-6 text-gray-300">Making the world a better place through constructing elegant hierarchies.</p>
+                        <div class="flex space-x-6">
+                            <a v-for="item in footerNavigation.social" :key="item.name" :href="item.href" class="text-gray-500 hover:text-gray-400">
+                                <span class="sr-only">{{ item.name }}</span>
+                                <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
+                            </a>
+                        </div>
+                    </div>
+                    <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
+                        <div class="md:grid md:grid-cols-2 md:gap-8">
+                            <div>
+                                <h3 class="text-sm font-semibold leading-6 text-white">Quicklinks</h3>
+                                <ul role="list" class="mt-6 space-y-4">
+                                    <li v-for="item in footerNavigation.solutions" :key="item.name">
+                                        <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-10 md:mt-0">
+                                <h3 class="text-sm font-semibold leading-6 text-white">Support</h3>
+                                <ul role="list" class="mt-6 space-y-4">
+                                    <li v-for="item in footerNavigation.support" :key="item.name">
+                                        <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="md:grid md:grid-cols-2 md:gap-8">
+                            <div>
+                                <h3 class="text-sm font-semibold leading-6 text-white">Company</h3>
+                                <ul role="list" class="mt-6 space-y-4">
+                                    <li v-for="item in footerNavigation.company" :key="item.name">
+                                        <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="mt-10 md:mt-0">
+                                <h3 class="text-sm font-semibold leading-6 text-white">Legal</h3>
+                                <ul role="list" class="mt-6 space-y-4">
+                                    <li v-for="item in footerNavigation.legal" :key="item.name">
+                                        <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-span-full md:col-span-full lg:col-span-2 xl:row-span-5 lg:col-start-6" v-if="hasSidebar">
-                    <Sidebar />
+                <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
+                    <p class="text-xs leading-5 text-gray-400">&copy; {{ new Date().getFullYear() }} {{ $page.props.server_name }}, Inc. All rights reserved.</p>
                 </div>
             </div>
-        </main>
+        </footer>
+
     </div>
-
-
-    <footer class="bg-gray-900 mt-5" aria-labelledby="footer-heading">
-        <h2 id="footer-heading" class="sr-only">Footer</h2>
-        <div class="mx-auto max-w-7xl px-6 pb-8 pt-16 sm:pt-24 lg:px-8 lg:pt-32">
-            <div class="xl:grid xl:grid-cols-3 xl:gap-8">
-                <div class="space-y-8">
-                    <img class="h-7" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Company name" />
-                    <p class="text-sm leading-6 text-gray-300">Making the world a better place through constructing elegant hierarchies.</p>
-                    <div class="flex space-x-6">
-                        <a v-for="item in footerNavigation.social" :key="item.name" :href="item.href" class="text-gray-500 hover:text-gray-400">
-                            <span class="sr-only">{{ item.name }}</span>
-                            <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
-                        </a>
-                    </div>
-                </div>
-                <div class="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
-                        <div>
-                            <h3 class="text-sm font-semibold leading-6 text-white">Quicklinks</h3>
-                            <ul role="list" class="mt-6 space-y-4">
-                                <li v-for="item in footerNavigation.solutions" :key="item.name">
-                                    <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mt-10 md:mt-0">
-                            <h3 class="text-sm font-semibold leading-6 text-white">Support</h3>
-                            <ul role="list" class="mt-6 space-y-4">
-                                <li v-for="item in footerNavigation.support" :key="item.name">
-                                    <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="md:grid md:grid-cols-2 md:gap-8">
-                        <div>
-                            <h3 class="text-sm font-semibold leading-6 text-white">Company</h3>
-                            <ul role="list" class="mt-6 space-y-4">
-                                <li v-for="item in footerNavigation.company" :key="item.name">
-                                    <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="mt-10 md:mt-0">
-                            <h3 class="text-sm font-semibold leading-6 text-white">Legal</h3>
-                            <ul role="list" class="mt-6 space-y-4">
-                                <li v-for="item in footerNavigation.legal" :key="item.name">
-                                    <a :href="item.href" class="text-sm leading-6 text-gray-300 hover:text-white">{{ item.name }}</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mt-16 border-t border-white/10 pt-8 sm:mt-20 lg:mt-24">
-                <p class="text-xs leading-5 text-gray-400">&copy; {{ new Date().getFullYear() }} {{ $page.props.server_name }}, Inc. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
 
 </template>
