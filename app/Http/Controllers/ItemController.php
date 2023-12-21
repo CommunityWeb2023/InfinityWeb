@@ -14,12 +14,6 @@ class ItemController extends Controller
         private readonly ItemService $itemService
     ){}
 
-
-    public function searchItem(Request $request)
-    {
-        return $this->itemService->searchItem($request->get('search'));
-    }
-
     /**
      * Display a listing of the resource.
      */

@@ -10,7 +10,11 @@ import TextInput from '@/Components/TextInput.vue';
 import AppLayout from "@/Layouts/AppLayout.vue";
 
 defineProps({
-    canResetPassword: Boolean,
+    canResetPassword: {
+        type: Boolean,
+        required: false,
+        default: true,
+    },
     status: String,
 });
 

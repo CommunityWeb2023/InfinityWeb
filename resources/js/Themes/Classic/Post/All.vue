@@ -1,6 +1,6 @@
 <script>
 import {Head} from "@inertiajs/vue3";
-import PostCard from "@/Pages/Post/Components/PostCard.vue";
+import PostCard from "@/Themes/Classic/Post/Components/PostCard.vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
 
 export default {

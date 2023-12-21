@@ -1,7 +1,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import PostCard from "@/Pages/Post/Components/PostCard.vue";
-import ShowPostCard from "@/Pages/Post/Components/ShowPostCard.vue";
+import PostCard from "@/Themes/Classic/Post/Components/PostCard.vue";
+import ShowPostCard from "@/Themes/Classic/Post/Components/ShowPostCard.vue";
 
 export default {
     name: "Show",

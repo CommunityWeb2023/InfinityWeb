@@ -7,10 +7,12 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 import {ArrowPathIcon, PhotoIcon, RocketLaunchIcon} from "@heroicons/vue/24/outline/index.js";
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 
 export default {
     name: "Add",
     components: {
+        Dashboard,
         QuillEditor,
         DashboardLayout, Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions,
         CheckIcon, ChevronUpDownIcon, PhotoIcon, ArrowPathIcon, RocketLaunchIcon,
