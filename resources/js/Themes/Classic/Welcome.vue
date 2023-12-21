@@ -1,8 +1,6 @@
 <script setup>
-import { Head } from '@inertiajs/vue3';
 import AppLayout from "@/Layouts/AppLayout.vue";
-import Sidebar from "@/Layouts/Components/Sidebar.vue";
-import PostCard from "@/Pages/Post/Components/PostCard.vue";
+import PostCard from "@/Themes/Classic/Post/Components/PostCard.vue";
 import { ArrowLongRightIcon } from "@heroicons/vue/24/outline/index.js";
 
 defineProps({

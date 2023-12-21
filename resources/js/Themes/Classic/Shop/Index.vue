@@ -27,8 +27,8 @@ import {
 import { XMarkIcon } from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon } from '@heroicons/vue/20/solid'
 import Paginate from "@/Components/Global/Paginate.vue";
-import ItemCard from "@/Pages/Shop/Components/ItemCard.vue";
-import CartItem from "@/Pages/Shop/Components/CartItem.vue";
+import ItemCard from "@/Themes/Classic/Shop/Components/ItemCard.vue";
+import CartItem from "@/Themes/Classic/Shop/Components/CartItem.vue";
 export default {
     name: "Index",
     components: {

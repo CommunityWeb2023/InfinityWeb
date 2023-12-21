@@ -1,7 +1,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout.vue";
-import PostCard from "@/Pages/Post/Components/PostCard.vue";
-import VoteCard from "@/Pages/Vote/Components/VoteCard.vue";
+import PostCard from "@/Themes/Classic/Post/Components/PostCard.vue";
+import VoteCard from "@/Themes/Classic/Vote/Components/VoteCard.vue";
 
 export default {
     name: "Index",

@@ -27,6 +27,11 @@ class DefaultSettingSeed extends Seeder
             'facebook' => 'https://facebook.com/xxxx',
             'youtube' => 'https://youtube.com/xxxx',
             'twitter' => 'https://twitter.com/xxxx',
+
+            'theme' => 'Classic',
+            'language' => 'en',
+            'timezone' => 'Europe/Berlin',
+            'maintenance' => 0,
         ]);
     }
 }

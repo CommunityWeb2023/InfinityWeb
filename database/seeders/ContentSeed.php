@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Flyff\Modules\Post\Models\Category;
+
 use Flyff\Modules\Post\Models\Post;
 use Flyff\Modules\Shop\Models\ShopCategory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Str;
 
 class ContentSeed extends Seeder
 {

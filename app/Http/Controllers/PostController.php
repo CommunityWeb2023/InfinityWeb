@@ -8,6 +8,7 @@ use Flyff\Modules\Post\Http\Resources\PostIndexResource;
 use Flyff\Modules\Post\Models\Post;
 use Flyff\Modules\Post\Services\CategoryService;
 use Flyff\Modules\Post\Services\PostService;
+use Flyff\Modules\Settings\Services\SettingService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -18,7 +19,8 @@ class PostController extends Controller
 
     public function __construct(
         private readonly PostService $postService,
-        private readonly CategoryService $categoryService
+        private readonly CategoryService $categoryService,
+        private readonly SettingService $settingService
     ){}
 
     /**
@@ -26,8 +28,7 @@ class PostController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        //dd($this->postService->getPosts());
-        return Inertia::render('Welcome', [
+        return Inertia::render( $this->settingService->currentTheme() . '/Welcome', [
             'posts' => $this->postService->getPosts()
         ]);
     }
@@ -76,7 +77,7 @@ class PostController extends Controller
      */
     public function show(Post $post): \Inertia\Response
     {
-        return Inertia::render('Post/Show', [
+        return Inertia::render($this->settingService->currentTheme() . '/Post/Show', [
             'post' => new PostIndexResource($post)
         ]);
     }
@@ -122,7 +123,7 @@ class PostController extends Controller
 
     public function all(): \Inertia\Response
     {
-        return Inertia::render('Post/All', [
+        return Inertia::render($this->settingService->currentTheme() . '/Post/All', [
             'posts' => $this->postService->getAllPosts()
         ]);
     }

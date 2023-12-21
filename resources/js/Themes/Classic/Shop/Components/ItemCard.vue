@@ -1,6 +1,6 @@
 <script>
 import {BanknotesIcon, CircleStackIcon} from "@heroicons/vue/24/outline/index.js";
-import {router} from "@inertiajs/vue3";
+import {router, useForm} from "@inertiajs/vue3";
 
 export default {
     name: "ItemCard",
@@ -8,6 +8,7 @@ export default {
     props: ['item'],
     data() {
         return {
+
         }
     },
     methods: {

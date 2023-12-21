@@ -12,9 +12,12 @@ const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
+    resolve: (name) => resolvePageComponent(`./Themes/${name}.vue`, import.meta.glob('./Themes/**/*.vue')),
     setup({ el, App, props, plugin }) {
-        return createApp({ render: () => h(App, props) })
+        return createApp({ render: () => h(App, props), mounted() {
+                delete el.dataset.page;
+            }
+        })
             .use(LaravelPermissionToVuejs)
             .use(plugin)
             .use(ZiggyVue)

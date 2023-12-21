@@ -12,11 +12,12 @@ use Inertia\Inertia;
 class ShopController extends Controller
 {
 
+    public string $theme = 'Classic';
+
     public function __construct(
         private readonly ShopCategoryService $shopCategoryService,
         private readonly ShopItemService $shopItemService,
         private readonly CartService $cartService
-
     ){}
 
     /**
@@ -24,7 +25,7 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Shop/Index',[
+        return Inertia::render($this->theme . '/Shop/Index',[
             'categories' => $this->shopCategoryService->getAllActiveCategories(),
             'items' => $this->shopItemService->getAllActiveItemsWithPaginate(20),
             'cartItems' => $this->cartService->getCart()

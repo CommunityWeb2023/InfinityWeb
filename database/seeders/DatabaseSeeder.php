@@ -13,6 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         $isDemo = config('app.demo');
 
+        $this->call(DefaultSettingSeed::class);
         $this->call(RoleAndPermissionSeed::class);
         $this->call(PostCategorySeed::class);
 
