@@ -3,6 +3,7 @@
 
 Our Discord: - [Community Web Discord](https://discord.gg/Ww4ybKqEYT)
 
+Trello Board: - [Community Web Trello](https://trello.com/b/cmCj5ykK/community-web)
 
 ## DE:
 Die Website Community Web 2023 repräsentiert eine innovative und gemeinschaftlich gestaltete Plattform, die sich an die spezifischen Bedürfnisse von Flyff-Serverbetreibern richtet. Entwickelt und kontinuierlich verbessert durch die aktive Mitwirkung ihrer Nutzergemeinschaft, legt sie einen starken Fokus auf das Domain Driven Design (DDD)-Prinzip. Dieser Ansatz gewährleistet eine intuitive und effiziente Nutzung, wobei die Struktur und Funktionen der Website eng an die realen Anforderungen ihrer Zielgruppe angepasst sind. Besonderen Wert legt Community Web 2023 auf Geschwindigkeit und Sicherheit, um eine optimale Online-Erfahrung zu bieten und gleichzeitig die Vertraulichkeit und den Schutz der Benutzerdaten zu gewährleisten. Insgesamt bildet sie eine dynamische und zuverlässige Ressource, die auf die Förderung einer engagierten und gut vernetzten Flyff-Community abzielt.
