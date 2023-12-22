@@ -2,27 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Flyff\Modules\Settings\Http\Requests\UpdateSettingRequest;
-use Flyff\Modules\Settings\Models\Setting;
+use Flyff\Modules\Guides\Models\Guides;
+use Flyff\Modules\Guides\Services\GuidesService;
 use Flyff\Modules\Settings\Services\SettingService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class SettingController extends Controller
+class GuidesController extends Controller
 {
     public function __construct(
+        private readonly GuidesService $guidesService,
         private readonly SettingService $settingService
     ){}
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render('Dashboard/Setting/Index', [
-            'themes' => $this->settingService->getThemes(),
-            'setting' => $this->settingService->getSetting()
-        ]);
+        return Inertia::render($this->settingService->currentTheme() . '/Guides/Index');
     }
 
     /**
@@ -44,7 +41,7 @@ class SettingController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Setting $setting)
+    public function show(Guides $guides)
     {
         //
     }
@@ -52,7 +49,7 @@ class SettingController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Setting $setting)
+    public function edit(Guides $guides)
     {
         //
     }
@@ -60,16 +57,15 @@ class SettingController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateSettingRequest $updateSettingRequest): \Illuminate\Http\RedirectResponse
+    public function update(Request $request, Guides $guides)
     {
-        $this->settingService->updateSetting($updateSettingRequest->validated());
-        return redirect()->back()->with('success', 'Setting updated successfully');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Setting $setting)
+    public function destroy(Guides $guides)
     {
         //
     }

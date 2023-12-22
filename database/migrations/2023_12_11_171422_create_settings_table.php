@@ -26,11 +26,13 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable();
             $table->string('twitter')->nullable();
+            $table->string('instagram')->nullable();
+            $table->string('twitch')->nullable();
 
             $table->string('theme')->default('Classic');
             $table->string('language')->default('en');
             $table->string('timezone')->default('Europe/Paris');
-            $table->string('maintenance')->default(0);
+            $table->boolean('maintenance')->default(false);
 
             $table->timestamps();
         });

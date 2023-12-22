@@ -13,4 +13,9 @@ class SettingRepository extends BaseRepository
         return Setting::first()->theme;
     }
 
+    public function getSetting()
+    {
+        return Setting::first();
+    }
+
 }

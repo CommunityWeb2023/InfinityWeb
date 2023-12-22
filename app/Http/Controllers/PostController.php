@@ -28,7 +28,7 @@ class PostController extends Controller
      */
     public function index(): \Inertia\Response
     {
-        return Inertia::render( $this->settingService->currentTheme() . '/Welcome', [
+        return Inertia::render( $this->settingService->currentTheme() . '/Home/Welcome', [
             'posts' => $this->postService->getPosts()
         ]);
     }
