@@ -19,6 +19,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $facebook
  * @property string $youtube
  * @property string $twitter
+ * @property string $instagram
+ * @property string $twitch
  * @property string $theme
  * @property string $language
  * @property string $timezone
@@ -41,9 +43,19 @@ class Setting extends Model
         'facebook',
         'youtube',
         'twitter',
+        'instagram',
+        'twitch',
         'theme',
         'language',
         'timezone',
         'maintenance',
     ];
+
+    protected $casts = [
+        'exp_rate' => 'integer',
+        'drop_rate' => 'integer',
+        'penya_rate' => 'integer',
+        'maintenance' => 'boolean',
+    ];
+
 }

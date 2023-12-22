@@ -27,6 +27,11 @@ const navigation = [
     { name: 'Ranking', href: '#', current: false, active: true },
     { name: 'Discord', href: '#', current: false, active: true },
     { name: 'Register', href: route('register'), current: route().current('register'), active: !usePage().props.auth.user },
+    { name: 'FAQ', href: route('faq.index'), current: route().current('faq.index'), active: true },
+    { name: 'Rules', href: route('rules.index'), current: route().current('rules.index'), active: true },
+    { name: 'Features', href: route('features.index'), current: route().current('features.index'), active: true },
+    { name: 'Guides', href: route('guides.index'), current: route().current('guides.index'), active: true },
+    { name: 'Downloads', href: route('download.index'), current: route().current('download.index'), active: true },
 ]
 
 const solutions = [

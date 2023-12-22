@@ -14,6 +14,7 @@ const navigation = [
     { name: 'Donates', href: '#', current: false },
     { name: 'Payments', href: '#', current: false },
     { name: 'Vote', href: '#', current: false },
+    { name: 'Settings', href: route('setting.index'), current: route().current('setting*') },
     { name: 'Website', href: route('home'), target: '_blank', current: false },
 ]
 

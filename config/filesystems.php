@@ -44,6 +44,13 @@ return [
             'throw' => false,
         ],
 
+        // resource folder -> js -> Themes
+        'themes' => [
+            'driver' => 'local',
+            'root' => resource_path('js/Themes'),
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

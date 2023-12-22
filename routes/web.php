@@ -21,6 +21,17 @@ Route::get('/post/{post}', [\App\Http\Controllers\PostController::class, 'show']
 Route::get('/all', [\App\Http\Controllers\PostController::class, 'all'])->name('post.all');
 
 
+Route::get('download', [\App\Http\Controllers\DownloadController::class, 'index'])->name('download.index');
+Route::get('faq', [\App\Http\Controllers\FaqController::class, 'index'])->name('faq.index');
+Route::get('guides', [\App\Http\Controllers\GuidesController::class, 'index'])->name('guides.index');
+Route::get('rules', [\App\Http\Controllers\RuleController::class, 'index'])->name('rules.index');
+Route::get('features', [\App\Http\Controllers\FeaturesController::class, 'index'])->name('features.index');
+
+Route::group(['prefix' => 'ranking'], function (){
+    Route::get('players', [\App\Http\Controllers\RankingController::class, 'players'])->name('ranking.players');
+    Route::get('guilds', [\App\Http\Controllers\RankingController::class, 'guilds'])->name('ranking.guilds');
+});
+
 Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified',]] , function (){
     Route::group(['prefix' => 'vote'], function (){
         Route::get('/', [\App\Http\Controllers\VoteController::class, 'index'])->name('vote.index');
@@ -57,6 +68,12 @@ Route::group([
         Route::patch('/update/{post}', [\App\Http\Controllers\PostController::class, 'update'])->name('post.update');
         Route::post('/update/{post}/image', [\App\Http\Controllers\PostController::class, 'updateImage'])->name('post.image.update');
         Route::delete('/destroy/{post}', [\App\Http\Controllers\PostController::class, 'destroy'])->name('post.destroy');
+    });
+
+    Route::group(['prefix' => 'setting'], function (){
+        Route::get('/', [\App\Http\Controllers\SettingController::class, 'index'])->name('setting.index');
+        Route::post('/store', [\App\Http\Controllers\SettingController::class, 'store'])->name('setting.store');
+        Route::patch('/update', [\App\Http\Controllers\SettingController::class, 'update'])->name('setting.update');
     });
 
     /*Route::group([
