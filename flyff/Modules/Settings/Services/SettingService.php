@@ -24,6 +24,11 @@ class SettingService
         return $this->settingRepository->currentTheme();
     }
 
+    public function isMaintenance(): bool
+    {
+        return $this->settingRepository->isMaintenance();
+    }
+
     public function getThemes(): array
     {
         $themes = [];

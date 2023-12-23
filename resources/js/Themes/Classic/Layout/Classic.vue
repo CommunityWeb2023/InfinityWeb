@@ -71,6 +71,9 @@ export default {
     <!-- navigation -->
 
 
+    <pre>
+        {{ $page }}
+    </pre>
 
     <!-- Footer -->
     <Footer />

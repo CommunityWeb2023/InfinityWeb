@@ -18,4 +18,9 @@ class SettingRepository extends BaseRepository
         return Setting::first();
     }
 
+    public function isMaintenance(): bool
+    {
+        return Setting::first()->maintenance;
+    }
+
 }

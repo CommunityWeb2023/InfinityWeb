@@ -8,7 +8,8 @@ export default {
 </script>
 
 <template>
-    <Classic title="Guides" :hasSidebar="true">
+    <Classic title="Downloads" :hasSidebar="true">
+
     </Classic>
 </template>
 

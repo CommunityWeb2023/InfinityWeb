@@ -2,11 +2,18 @@
 
 namespace App\Http\Middleware;
 
+use Flyff\Modules\Settings\Services\SettingService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
+
+    public function __construct(
+        private readonly SettingService $settingService
+    ){}
+
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -45,6 +52,8 @@ class HandleInertiaRequests extends Middleware
             'url_parameters' => [
                 'query' => $request->get('query') ?? ''
             ],
+            'view_dashboard' => Auth::user() ? Auth::user()->hasPermissionTo('view dashboard') : false,
+            'maintenance' => $this->settingService->isMaintenance(),
         ]);
     }
 }

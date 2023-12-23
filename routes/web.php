@@ -33,6 +33,11 @@ Route::group(['prefix' => 'ranking'], function (){
 });
 
 Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified',]] , function (){
+
+    Route::group(['prefix' => 'user'], function(){
+        Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('user.index');
+    });
+
     Route::group(['prefix' => 'vote'], function (){
         Route::get('/', [\App\Http\Controllers\VoteController::class, 'index'])->name('vote.index');
     });

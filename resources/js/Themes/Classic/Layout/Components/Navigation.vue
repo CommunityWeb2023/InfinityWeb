@@ -3,11 +3,12 @@ import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuIt
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/vue/24/outline'
 import { PlusIcon } from '@heroicons/vue/20/solid'
 import {router} from "@inertiajs/vue3";
+import {UserIcon} from "@heroicons/vue/24/outline/index.js";
 export default {
     name: "Navigation",
     components: {
         Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems,
-        Bars3Icon, BellIcon, XMarkIcon, PlusIcon
+        Bars3Icon, BellIcon, XMarkIcon, PlusIcon, UserIcon
     },
     data(){
         return {
@@ -142,16 +143,17 @@ export default {
                         <!-- Profile dropdown -->
                         <Menu as="div" class="relative ml-3" v-if="$page.props.auth.user">
                             <div>
-                                <MenuButton class="relative flex rounded-full text-sm focus:outline-none border-transparent text-gray-200 hover:border-gray-300 hover:text-gray-100">
+                                <MenuButton class="relative flex items-center rounded-full text-sm focus:outline-none border-transparent text-gray-200 hover:border-gray-300 hover:text-gray-100">
                                     <span class="absolute -inset-1.5" />
                                     <span class="sr-only">Open user menu</span>
+                                    <UserIcon class="text-gray-200 mr-2 h-4 w-4" />
                                     {{ $page.props.auth.user?.username }}
                                 </MenuButton>
                             </div>
                             <transition enter-active-class="transition ease-out duration-200" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                                 <MenuItems class="absolute right-0 z-10 mt-7 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                                     <MenuItem v-slot="{ active }">
-                                        <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Your Profile</a>
+                                        <a :href="route('user.index')" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Your Profile</a>
                                     </MenuItem>
                                     <MenuItem v-slot="{ active }">
                                         <a :href="route('shop.index')" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Shop</a>
@@ -161,6 +163,9 @@ export default {
                                     </MenuItem>
                                     <MenuItem v-slot="{ active }">
                                         <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Donate</a>
+                                    </MenuItem>
+                                    <MenuItem v-slot="{ active }" v-if="$page.props.view_dashboard">
+                                        <a :href="route('dashboard')" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 font-semibold border-b border-t border-dashed']">Dashboard</a>
                                     </MenuItem>
                                     <MenuItem v-slot="{ active }">
                                         <div @click="logout" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-red-500 cursor-pointer']">Sign out</div>
@@ -177,6 +182,11 @@ export default {
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="w-full h-12 bg-gray-950" v-if="$page.props.maintenance">
+            <div class="flex items-center justify-center h-12 ">
+                <p class="text-white">Maintenance Mode is activate</p>
             </div>
         </div>
         <!-- mobile -->
@@ -208,6 +218,7 @@ export default {
             </div>
         </DisclosurePanel>
     </Disclosure>
+
 </template>
 
 <style scoped>
