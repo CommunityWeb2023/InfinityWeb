@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Flyff\Modules\Settings\Services\SettingService;
 use Flyff\Modules\Vote\Http\Requests\PingBackVoteRequest;
 use Flyff\Modules\Vote\Models\Vote;
 use Flyff\Modules\Vote\Services\VoteService;
@@ -13,7 +14,8 @@ class VoteController extends Controller
 {
     public function __construct(
         private readonly VoteSettingService $voteSettingService,
-        private readonly VoteService $voteService
+        private readonly VoteService $voteService,
+        private readonly SettingService $settingService
     )
     {
     }
@@ -23,7 +25,7 @@ class VoteController extends Controller
      */
     public function index()
     {
-        return Inertia::render('Vote/Index', [
+        return Inertia::render($this->settingService->currentTheme() . '/Vote/Index', [
             'voteSites' => $this->voteSettingService->getVoteSites(),
         ]);
     }

@@ -1,21 +1,21 @@
 <script>
-import AppLayout from "@/Layouts/AppLayout.vue";
 import PostCard from "@/Themes/Classic/Post/Components/PostCard.vue";
 import VoteCard from "@/Themes/Classic/Vote/Components/VoteCard.vue";
+import Classic from "@/Themes/Classic/Layout/Classic.vue";
 
 export default {
     name: "Index",
     components: {
+        Classic,
         VoteCard,
         PostCard,
-        AppLayout
     },
     props: ['voteSites'],
 }
 </script>
 
 <template>
-    <AppLayout title="Vote for us">
+    <Classic :has-sidebar="false" title="Vote for us">
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-4">
             <div v-for="site in voteSites" :key="site.id" >
@@ -23,7 +23,7 @@ export default {
 
             </div>
         </div>
-    </AppLayout>
+    </Classic>
 </template>
 
 <style scoped>

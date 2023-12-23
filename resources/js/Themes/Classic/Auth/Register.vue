@@ -8,6 +8,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import AppLayout from "@/Layouts/AppLayout.vue";
+import Classic from "@/Themes/Classic/Layout/Classic.vue";
 
 const form = useForm({
     username: '',
@@ -15,6 +16,7 @@ const form = useForm({
     password: '',
     password_confirmation: '',
     terms: false,
+    rules: false,
 });
 
 const submit = () => {
@@ -27,7 +29,7 @@ const submit = () => {
 <template>
     <Head title="Register" />
 
-    <AppLayout :has-sidebar="false">
+    <Classic title="Register" :has-sidebar="false">
         <AuthenticationCard>
             <form @submit.prevent="submit">
                 <div>
@@ -96,6 +98,19 @@ const submit = () => {
                     </InputLabel>
                 </div>
 
+                <div class="mt-4">
+                    <InputLabel for="terms">
+                        <div class="flex items-center">
+                            <Checkbox id="terms" v-model:checked="form.rules" name="terms" required />
+
+                            <div class="ms-2">
+                                I agree to the <a target="_blank" :href="route('rules.index')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Rules</a>
+                            </div>
+                        </div>
+                        <InputError class="mt-2" :message="form.errors.rules" />
+                    </InputLabel>
+                </div>
+
                 <div class="flex items-center justify-end mt-4">
                     <Link :href="route('login')" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                         Already registered?
@@ -107,5 +122,5 @@ const submit = () => {
                 </div>
             </form>
         </AuthenticationCard>
-    </AppLayout>
+    </Classic>
 </template>
