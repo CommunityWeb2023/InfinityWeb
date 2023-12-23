@@ -2,18 +2,19 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import PostCard from "@/Themes/Classic/Post/Components/PostCard.vue";
 import ShowPostCard from "@/Themes/Classic/Post/Components/ShowPostCard.vue";
+import Classic from "@/Themes/Classic/Layout/Classic.vue";
 
 export default {
     name: "Show",
-    components: {ShowPostCard, PostCard, AppLayout},
+    components: {Classic, ShowPostCard, PostCard, AppLayout},
     props: ['post'],
 }
 </script>
 
 <template>
-    <AppLayout :has-sidebar="false">
+    <Classic :title="post.title" :has-sidebar="false">
         <ShowPostCard :post="post" />
-    </AppLayout>
+    </Classic>
 </template>
 
 <style scoped>

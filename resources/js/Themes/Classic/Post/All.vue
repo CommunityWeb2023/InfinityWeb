@@ -2,16 +2,17 @@
 import {Head} from "@inertiajs/vue3";
 import PostCard from "@/Themes/Classic/Post/Components/PostCard.vue";
 import AppLayout from "@/Layouts/AppLayout.vue";
+import Classic from "@/Themes/Classic/Layout/Classic.vue";
 
 export default {
     name: "All",
-    components: {AppLayout, PostCard, Head},
+    components: {Classic, PostCard, Head},
     props: ['posts'],
 }
 </script>
 
 <template>
-    <AppLayout :has-sidebar="false">
+    <Classic title="All News" :has-sidebar="false">
         <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-5 gap-4">
             <div v-for="post in posts" :key="post.id" >
                 <a :href="route('post.show', post.id)" class="group">
@@ -19,7 +20,7 @@ export default {
                 </a>
             </div>
         </div>
-    </AppLayout>
+    </Classic>
 </template>
 
 <style scoped>

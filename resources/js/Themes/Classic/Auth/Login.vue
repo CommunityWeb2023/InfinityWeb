@@ -8,6 +8,8 @@ import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import AppLayout from "@/Layouts/AppLayout.vue";
+import Classic from "@/Themes/Classic/Layout/Classic.vue";
+import DemoLogin from "@/Themes/Classic/Auth/DemoLogin.vue";
 
 defineProps({
     canResetPassword: {
@@ -57,9 +59,9 @@ const loginAs = (type) => {
 </script>
 
 <template>
-   <AppLayout :has-sidebar="false">
+   <Classic title="Log In" :has-sidebar="false">
+        <DemoLogin v-if="$page.props.isDemo" @loginAs="loginAs"/>
        <Head title="Log in" />
-
        <AuthenticationCard>
            <template #logo>
                <AuthenticationCardLogo />
@@ -70,24 +72,6 @@ const loginAs = (type) => {
            </div>
 
            <form @submit.prevent="submit">
-
-               <div v-if="$page.props.isDemo" class="mb-3">
-                   <h3 class="font-light mb-2">Login as:</h3>
-                   <div class="grid grid-cols-1 md:grid-cols-3 gap-2">
-                       <button @click="loginAs('admin')" type="button" class="rounded-md bg-blue-600 px-2.5 py-1.5 text-sm font-light text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-                           Admin
-                       </button>
-                       <button @click="loginAs('gamemaster')" type="button" class="rounded-md bg-blue-600 px-2.5 py-1.5 text-sm font-light text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-                           Gamemaster
-                       </button>
-                       <button @click="loginAs('support')" type="button" class="rounded-md bg-blue-600 px-2.5 py-1.5 text-sm font-light text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-                           Support
-                       </button>
-                       <button @click="loginAs('user')" type="button" class="rounded-md bg-blue-600 px-2.5 py-1.5 text-sm font-light text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600">
-                           User
-                       </button>
-                   </div>
-               </div>
 
                <div>
                    <InputLabel for="email" value="Email" />
@@ -134,5 +118,5 @@ const loginAs = (type) => {
                </div>
            </form>
        </AuthenticationCard>
-   </AppLayout>
+   </Classic>
 </template>

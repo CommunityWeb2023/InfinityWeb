@@ -29,9 +29,11 @@ import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon } from '@heroicons/vue
 import Paginate from "@/Components/Global/Paginate.vue";
 import ItemCard from "@/Themes/Classic/Shop/Components/ItemCard.vue";
 import CartItem from "@/Themes/Classic/Shop/Components/CartItem.vue";
+import Classic from "@/Themes/Classic/Layout/Classic.vue";
 export default {
     name: "Index",
     components: {
+        Classic,
         CartItem,
         ItemCard,
         Paginate,
@@ -145,7 +147,7 @@ export default {
 </script>
 
 <template>
-    <AppLayout title="Shop">
+    <Classic :has-sidebar="false" title="Shop">
 
         <div class="grid grid-col-1 md:grid-cols-2 xl:grid-cols-5 grid-rows-1 gap-4">
             <div class="sm:col-span-5 md:col-span-1">
@@ -282,7 +284,7 @@ export default {
                 </div>
             </div>
         </div>
-    </AppLayout>
+    </Classic>
 </template>
 
 <style>

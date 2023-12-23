@@ -2,6 +2,7 @@
 import AppLayout from "@/Layouts/AppLayout.vue";
 import PostCard from "@/Themes/Classic/Post/Components/PostCard.vue";
 import { ArrowLongRightIcon } from "@heroicons/vue/24/outline/index.js";
+import Classic from "@/Themes/Classic/Layout/Classic.vue";
 
 defineProps({
     posts: Array,
@@ -11,7 +12,7 @@ defineProps({
 </script>
 
 <template>
-    <AppLayout :has-sidebar="true" title="Welcome">
+    <Classic :has-sidebar="true" title="Welcome">
 
 
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -27,7 +28,7 @@ defineProps({
             </a>
             <ArrowLongRightIcon class="h-3 w-3" />
         </div>
-    </AppLayout>
+    </Classic>
 </template>
 
 <style>
