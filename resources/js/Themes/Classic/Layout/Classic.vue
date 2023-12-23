@@ -68,12 +68,6 @@ export default {
             </div>
         </main>
     </div>
-    <!-- navigation -->
-
-
-    <pre>
-        {{ $page }}
-    </pre>
 
     <!-- Footer -->
     <Footer />
