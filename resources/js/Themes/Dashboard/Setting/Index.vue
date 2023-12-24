@@ -54,10 +54,6 @@ export default {
 
 <template>
     <DashboardLayout>
-        <pre>
-            {{ settings }}
-        </pre>
-
         <div class="my-10">
             <SwitchGroup as="div" class="flex items-center justify-between">
                 <span class="flex flex-grow flex-col">
@@ -296,7 +292,7 @@ export default {
                             <tr v-for="theme in themes" :key="theme.name">
                                 <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-0">{{ theme.title }}</td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ theme.author }}</td>
-                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ theme.description }}</td>
+                                <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ String.prototype.substring.call(theme.description, 0 , 90) }}</td>
                                 <td class="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{{ theme.version }}</td>
                                 <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
                                     <button v-if="!theme?.active" @click="activateTheme(theme.name)" class="text-indigo-600 hover:text-indigo-900">Activate</button>

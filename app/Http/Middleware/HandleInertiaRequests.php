@@ -54,6 +54,14 @@ class HandleInertiaRequests extends Middleware
             ],
             'view_dashboard' => Auth::user() ? Auth::user()->hasPermissionTo('view dashboard') : false,
             'maintenance' => $this->settingService->isMaintenance(),
+            'social_media' => [
+                'discord' => $this->settingService->getSetting()->discord,
+                'facebook' => $this->settingService->getSetting()->facebook,
+                'twitter' => $this->settingService->getSetting()->twitter,
+                'youtube' => $this->settingService->getSetting()->youtube,
+                'instagram' => $this->settingService->getSetting()->instagram,
+                'twitch' => $this->settingService->getSetting()->twitch,
+            ]
         ]);
     }
 }

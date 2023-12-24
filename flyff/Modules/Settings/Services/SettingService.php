@@ -37,11 +37,11 @@ class SettingService
             $theme = basename($directory);
             if(file_exists(resource_path('js/Themes/' . $theme . '/theme.json'))){
                 $themeJson = json_decode(file_get_contents(resource_path('js/Themes/' . $theme . '/theme.json')));
-                if($themeJson->theme_type == 'frontend'){
-                    $themes[$theme] = $themeJson;
+                if($themeJson->type === 'theme'){
+                    $themes[$themeJson->theme_id] = $themeJson;
                     // if this theme is the current theme, we set the active property to true
-                    if($theme == $this->currentTheme()){
-                        $themes[$theme]->active = true;
+                    if($themeJson->theme_id == $this->currentTheme()){
+                        $themes[$themeJson->theme_id]->active = true;
                     }
                 }
             }
