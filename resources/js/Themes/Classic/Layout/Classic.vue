@@ -77,7 +77,7 @@ export default {
 
     <CookieConsentButton />
 
-    <div class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8" v-if="$page.props.maintenance">
+    <div class="pointer-events-none fixed inset-x-0 bottom-0 sm:flex sm:justify-center sm:px-6 sm:pb-5 lg:px-8 z-30" v-if="$page.props.maintenance">
         <div class="pointer-events-auto flex items-center justify-between gap-x-6 bg-red-900 px-6 py-2.5 sm:rounded-xl sm:py-3 sm:pl-4 sm:pr-3.5 shadow-lg">
             <p class="text-sm leading-6 text-white">
                 <span class="font-semibold">Maintenance mode</span> is currently activated on this website. Therefore, the website may not be available or only to a limited extent.
