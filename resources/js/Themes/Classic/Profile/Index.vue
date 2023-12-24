@@ -27,12 +27,12 @@ export default {
        <div class="space-y-10">
            <Profile />
 
-           <UpdatePasswordForm class="mt-10 sm:mt-0" />
+           <UpdatePasswordForm class="mt-10 sm:mt-0" v-if="!$page.props.maintenance" />
 
-           <LogoutOtherBrowserSessionsForm :sessions="sessions" v-if="sessions.length > 0" />
+           <LogoutOtherBrowserSessionsForm :sessions="sessions" v-if="sessions.length > 0 && !$page.props.maintenance" />
 
            <TwoFactorAuthenticationForm
-               :requires-confirmation="confirmsTwoFactorAuthentication"
+               :requires-confirmation="confirmsTwoFactorAuthentication" v-if="!$page.props.maintenance"
                class="mt-10 sm:mt-0"
            />
        </div>
