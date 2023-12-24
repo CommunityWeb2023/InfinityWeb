@@ -184,11 +184,6 @@ export default {
                 </div>
             </div>
         </div>
-        <div class="w-full h-12 bg-gray-950" v-if="$page.props.maintenance">
-            <div class="flex items-center justify-center h-12 ">
-                <p class="text-white">Maintenance Mode is activate</p>
-            </div>
-        </div>
         <!-- mobile -->
         <DisclosurePanel class="md:hidden bg-white">
             <div class="space-y-1 pb-3 pt-2">

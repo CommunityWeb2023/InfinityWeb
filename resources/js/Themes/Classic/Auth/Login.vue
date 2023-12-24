@@ -60,7 +60,7 @@ const loginAs = (type) => {
 
 <template>
    <Classic title="Log In" :has-sidebar="false">
-        <DemoLogin v-if="$page.props.isDemo && !$page.props.maintenance" @loginAs="loginAs"/>
+        <DemoLogin v-if="$page.props.isDemo" @loginAs="loginAs"/>
        <Head title="Log in" />
        <AuthenticationCard>
            <template #logo>
@@ -112,7 +112,7 @@ const loginAs = (type) => {
                        Forgot your password?
                    </Link>
 
-                   <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing || $page.props.maintenance, }" :disabled="form.processing || $page.props.maintenance">
+                   <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing}" :disabled="form.processing">
                        Log in
                    </PrimaryButton>
                </div>
