@@ -2,12 +2,12 @@
 
 namespace App\Providers;
 
-
-use Carbon\Carbon;
+use Flyff\Modules\Settings\Services\SettingService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
+
     /**
      * Register any application services.
      */
@@ -19,8 +19,8 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot(SettingService $settingService): void
     {
-
+        config(['app.timezone' => $settingService->getSetting()->timezone]);
     }
 }

@@ -1,10 +1,13 @@
 <script>
 import Classic from "@/Themes/Classic/Layout/Classic.vue";
 import Profile from "@/Themes/Classic/Profile/Components/Profile.vue";
+import LogoutOtherBrowserSessionsForm from "@/Themes/Classic/Profile/Components/LogoutOtherBrowserSessionsForm.vue";
+import TwoFactorAuthenticationForm from "@/Themes/Classic/Profile/Components/TwoFactorAuthenticationForm.vue";
+import UpdatePasswordForm from "@/Themes/Classic/Profile/Components/UpdatePasswordForm.vue";
 
 export default {
     name: "Index",
-    components: {Profile, Classic},
+    components: {UpdatePasswordForm, TwoFactorAuthenticationForm, LogoutOtherBrowserSessionsForm, Profile, Classic},
     props:{
         confirmsTwoFactorAuthentication: {
             type: Boolean,
@@ -21,7 +24,19 @@ export default {
 <template>
     <Classic title="Profile" :hasSidebar="true">
 
-        <Profile />
+       <div class="space-y-10">
+           <Profile />
+
+           <UpdatePasswordForm class="mt-10 sm:mt-0" />
+
+           <LogoutOtherBrowserSessionsForm :sessions="sessions" v-if="sessions.length > 0" />
+
+           <TwoFactorAuthenticationForm
+               :requires-confirmation="confirmsTwoFactorAuthentication"
+               class="mt-10 sm:mt-0"
+           />
+       </div>
+
     </Classic>
 </template>
 

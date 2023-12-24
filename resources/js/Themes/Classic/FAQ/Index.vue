@@ -1,10 +1,9 @@
 <script>
-import AppLayout from "@/Layouts/AppLayout.vue";
 import Classic from "@/Themes/Classic/Layout/Classic.vue";
 
 export default {
     name: "Index",
-    components: {Classic, AppLayout}
+    components: {Classic}
 }
 </script>
 

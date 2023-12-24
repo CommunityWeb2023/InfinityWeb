@@ -44,7 +44,16 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return array_merge(parent::share($request), [
-            'server_name' => config('app.name'),
+            'server' => [
+                'name' => $this->settingService->getSetting()->title,
+                'slogan' => $this->settingService->getSetting()->slogan,
+                'description' => $this->settingService->getSetting()->description,
+                'logo' => $this->settingService->getSetting()->logo,
+                'theme' => $this->settingService->currentTheme(),
+                'language' => $this->settingService->getSetting()->language,
+                'timezone' => $this->settingService->getSetting()->timezone,
+            ],
+            'current_timezone' => config('app.timezone'),
             'isDemo' => config('app.demo'),
             'penya' => config('flyff.penya'),
             'exp' => config('flyff.exp'),

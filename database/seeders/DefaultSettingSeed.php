@@ -23,10 +23,7 @@ class DefaultSettingSeed extends Seeder
             'drop_rate' => 0,
             'penya_rate' => 0,
 
-            'discord' => 'https://discord.gg/xxxx',
-            'facebook' => 'https://facebook.com/xxxx',
-            'youtube' => 'https://youtube.com/xxxx',
-            'twitter' => 'https://twitter.com/xxxx',
+            'discord' => 'https://discord.gg/R9kpCyURfY',
 
             'theme' => 'Classic',
             'language' => 'en',

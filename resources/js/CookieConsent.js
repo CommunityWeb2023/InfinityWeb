@@ -121,7 +121,7 @@ const cookieConsentConfig = {
                         },
                         {
                             title: "Weitere Informationen",
-                            description: "For any query in relation to my policy on cookies and your choices, please <a class=\"cc__link\" href=\"#yourdomain.com\">contact me</a>."
+                            description: "For any query in relation to my policy on cookies and your choices, please <a class=\"cc__link\" href=\"/faq\">contact me</a>."
                         }
                     ]
                 }

@@ -7,10 +7,12 @@ import Footer from "@/Themes/Classic/Layout/Components/Footer.vue";
 import Sidebar from "@/Themes/Classic/Layout/Components/Sidebar.vue";
 import CookieConsentButton from "@/Themes/Classic/Layout/Components/CookieConsentButton.vue";
 import {XMarkIcon} from "@heroicons/vue/24/outline";
+import Season from "@/Themes/Classic/Layout/Components/Season.vue";
 
 export default {
     name: "Classic",
     components: {
+        Season,
         CookieConsentButton,
         Splashloader,
         Sidebar,
@@ -44,16 +46,17 @@ export default {
 <template>
     <Splashloader v-if="splashloader" />
     <Head :title="title" />
+
     <div class="bg-[url('/storage/images/flyff-example.jpeg')] bg-top bg-no-repeat">
         <Navigation />
 
-
+        <Season />
         <!-- Header -->
-        <div class="mx-auto max-w-2xl py-32 sm:py-32 lg:py-56">
+        <div class="mx-auto max-w-2xl py-20 sm:py-20 lg:py-44">
             <div class="text-center">
                 <h1 class="text-4xl font-extrabold text-white sm:text-5xl lg:text-6xl flex items-center justify-center">
                     <!-- Hero headline -->
-                    <img src="/storage/images/CommunityWebLogo.png" alt="" class="h-52 w-52">
+                    <img src="/storage/images/CommunityWebLogo.png" alt="" class="h-64 w-64">
                 </h1>
             </div>
         </div>

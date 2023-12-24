@@ -1,5 +1,4 @@
 <script setup>
-import AppLayout from "@/Layouts/AppLayout.vue";
 import PostCard from "@/Themes/Classic/Post/Components/PostCard.vue";
 import { ArrowLongRightIcon } from "@heroicons/vue/24/outline/index.js";
 import Classic from "@/Themes/Classic/Layout/Classic.vue";

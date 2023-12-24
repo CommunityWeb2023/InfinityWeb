@@ -45,7 +45,7 @@ export default {
             </div>
         </div>
     </div>
-    <div class="relative flex justify-center gap-2">
+    <div class="relative md:flex justify-center gap-2 hidden ">
         <a v-if="$page.props.social_media.discord" :href="$page.props.social_media.discord" target="_blank" class="-mt-3 hover:-mt-1 transition-all duration-300 cursor-pointer">
             <div class="h-10 w-10 rounded-full bg-blue-800 p-2 text-white flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" class="text-white" height="16" width="20" viewBox="0 0 640 512">

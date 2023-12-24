@@ -1,5 +1,4 @@
 <script>
-import AppLayout from "@/Layouts/AppLayout.vue";
 import {
     ClockIcon,
     FolderIcon,
@@ -37,7 +36,7 @@ export default {
         CartItem,
         ItemCard,
         Paginate,
-        FolderIcon, ClockIcon, AppLayout, CircleStackIcon, BanknotesIcon, QueueListIcon, Squares2X2Icon,
+        FolderIcon, ClockIcon, CircleStackIcon, BanknotesIcon, QueueListIcon, Squares2X2Icon,
         ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon, XMarkIcon, XCircleIcon, CheckCircleIcon,
         Dialog,
         DialogPanel,

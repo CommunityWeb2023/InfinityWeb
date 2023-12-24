@@ -1,14 +1,14 @@
 <script setup>
 import { ref, computed, watch } from 'vue';
 import { router, useForm, usePage } from '@inertiajs/vue3';
-import ActionSection from '@/Components/ActionSection.vue';
-import ConfirmsPassword from '@/Components/ConfirmsPassword.vue';
-import DangerButton from '@/Components/DangerButton.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import SecondaryButton from '@/Components/SecondaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
+import ActionSection from '@/Themes/Classic/GlobalComponents/ActionSection.vue';
+import ConfirmsPassword from '@/Themes/Classic/GlobalComponents/ConfirmsPassword.vue';
+import DangerButton from '@/Themes/Classic/GlobalComponents/DangerButton.vue';
+import InputError from '@/Themes/Classic/GlobalComponents/InputError.vue';
+import InputLabel from '@/Themes/Classic/GlobalComponents/InputLabel.vue';
+import PrimaryButton from '@/Themes/Classic/GlobalComponents/PrimaryButton.vue';
+import SecondaryButton from '@/Themes/Classic/GlobalComponents/SecondaryButton.vue';
+import TextInput from '@/Themes/Classic/GlobalComponents/TextInput.vue';
 
 const props = defineProps({
     requiresConfirmation: Boolean,
@@ -106,15 +106,11 @@ const disableTwoFactorAuthentication = () => {
 
 <template>
     <ActionSection>
-        <template #title>
-            Two Factor Authentication
-        </template>
-
-        <template #description>
-            Add additional security to your account using two factor authentication.
-        </template>
-
         <template #content>
+            <h2 class="text-xl font-semibold">
+                Two Factor Authentication
+            </h2>
+            <p class="mb-3">Add additional security to your account using two factor authentication.</p>
             <h3 v-if="twoFactorEnabled && ! confirming" class="text-lg font-medium text-gray-900">
                 You have enabled two factor authentication.
             </h3>
