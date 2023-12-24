@@ -20,6 +20,14 @@
         @routes
         @vite(['resources/js/app.js', "resources/js/Themes/{$page['component']}.vue"])
         @inertiaHead
+        <script type="text/plain" async data-category="analytics" data-service="Google Analytics" src="https://www.googletagmanager.com/gtag/js?id=G-YQZWDXPYY5"></script>
+        <script type="text/plain" data-category="analytics" data-service="Google Analytics">
+             window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-YQZWDXPYY5');
+        </script>
     </head>
     <body class="font-sans antialiased">
         @inertia

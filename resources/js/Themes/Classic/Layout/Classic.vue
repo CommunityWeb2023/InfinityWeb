@@ -5,10 +5,12 @@ import Navigation from "@/Themes/Classic/Layout/Components/Navigation.vue";
 import Splashloader from "@/Themes/Classic/Layout/Components/Splashloader.vue";
 import Footer from "@/Themes/Classic/Layout/Components/Footer.vue";
 import Sidebar from "@/Themes/Classic/Layout/Components/Sidebar.vue";
+import CookieConsentButton from "@/Themes/Classic/Layout/Components/CookieConsentButton.vue";
 
 export default {
     name: "Classic",
     components: {
+        CookieConsentButton,
         Splashloader,
         Sidebar,
         Navigation,
@@ -71,6 +73,8 @@ export default {
 
     <!-- Footer -->
     <Footer />
+
+    <CookieConsentButton />
 </template>
 
 <style scoped>

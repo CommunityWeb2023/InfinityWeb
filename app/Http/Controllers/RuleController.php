@@ -20,7 +20,7 @@ class RuleController extends Controller
      */
     public function index()
     {
-        return Inertia::render($this->settingService->currentTheme() . '/Guides/Index');
+        return Inertia::render($this->settingService->currentTheme() . '/Rules/Index');
     }
 
     /**

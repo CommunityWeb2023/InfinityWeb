@@ -13,6 +13,7 @@ export default {
             <div class="mt-8 md:order-1 md:mt-0">
                 <p class="text-center text-xs leading-5 text-gray-200">&copy; {{ new Date().getFullYear() }} <span class="font-bold">{{ $page.props.server_name }}</span>. All rights reserved.</p>
             </div>
+
         </div>
     </footer>
 </template>
