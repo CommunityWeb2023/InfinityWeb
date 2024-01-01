@@ -36,8 +36,8 @@ export default {
                     sub: [
                         {
                             name: 'Player',
-                            href: route('download.index'),
-                            current: route().current('download.index'),
+                            href: route('ranking.players'),
+                            current: route().current('ranking.players'),
                             active: true,
                         },
                         {
