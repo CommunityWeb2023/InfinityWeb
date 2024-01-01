@@ -29,8 +29,8 @@ export default {
                 },
                 {
                     name: 'Ranking',
-                    href: route('download.index'),
-                    current: route().current('download.index'),
+                    href: route('ranking.players'),
+                    current: route().current('ranking.players'),
                     active: true,
                     dropdown: true,
                     sub: [
