@@ -6,23 +6,23 @@
         "build": "vite build"
     },
     "devDependencies": {
-        "@inertiajs/vue3": "^1.0.0",
-        "@tailwindcss/forms": "^0.5.2",
-        "@tailwindcss/typography": "^0.5.2",
-        "@vitejs/plugin-vue": "^4.0.0",
-        "autoprefixer": "^10.4.7",
-        "axios": "^1.6.1",
-        "laravel-vite-plugin": "^0.8.0",
+        "@inertiajs/vue3": "^1.0.14",
+        "@tailwindcss/forms": "^0.5.7",
+        "@tailwindcss/typography": "^0.5.10",
+        "@vitejs/plugin-vue": "^5.0.1",
+        "autoprefixer": "^10.4.16",
+        "axios": "^1.6.3",
+        "laravel-vite-plugin": "^1.0.1",
         "postcss": "^8.4.14",
-        "tailwindcss": "^3.1.0",
-        "vite": "^4.0.0",
-        "vue": "^3.2.31"
+        "tailwindcss": "^3.4.0",
+        "vite": "^5.0.10",
+        "vue": "^3.4.1"
     },
     "dependencies": {
         "@headlessui/vue": "^1.7.16",
-        "@heroicons/vue": "^2.0.18",
+        "@heroicons/vue": "^2.1.1",
         "@vueup/vue-quill": "^1.2.0",
-        "@vueuse/core": "^10.7.0",
+        "@vueuse/core": "^10.7.1",
         "animate.css": "^4.1.1",
         "laravel-permission-to-vuejs": "^3.0.2",
         "vanilla-cookieconsent": "^3.0.0-rc.17"
