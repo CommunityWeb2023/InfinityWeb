@@ -23,6 +23,8 @@ class DefaultSettingSeed extends Seeder
             'drop_rate' => 0,
             'penya_rate' => 0,
 
+            'password_hash' => 'kikugalanet',
+
             'discord' => 'https://discord.gg/R9kpCyURfY',
 
             'theme' => 'Classic',

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Flyff\Modules\User\Models\Traits\HasAccounts;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -22,6 +23,7 @@ class User extends Authenticatable
     use LaravelPermissionToVueJS;
     use HasRoles;
     use Searchable;
+    use HasAccounts;
     /**
      * The attributes that are mass assignable.
      *

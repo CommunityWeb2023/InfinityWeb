@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('drop_rate')->default(0);
             $table->string('penya_rate')->default(0);
 
+            $table->string('password_hash')->nullable();
+
             $table->string('discord')->nullable();
             $table->string('facebook')->nullable();
             $table->string('youtube')->nullable();

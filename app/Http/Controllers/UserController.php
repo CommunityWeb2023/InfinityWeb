@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Flyff\Modules\Account\Services\AccountService;
 use Flyff\Modules\Settings\Services\SettingService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Laravel\Fortify\Features;
 use Laravel\Jetstream\Agent;
@@ -16,7 +18,8 @@ class UserController extends Controller
     use ConfirmsTwoFactorAuthentication;
 
     public function __construct(
-        private readonly SettingService $settingService
+        private readonly SettingService $settingService,
+        private readonly AccountService $accountService,
     ){}
 
     /**
@@ -29,6 +32,7 @@ class UserController extends Controller
         return Jetstream::inertia()->render($request, $this->settingService->currentTheme(). '/Profile/Index', [
             'confirmsTwoFactorAuthentication' => Features::optionEnabled(Features::twoFactorAuthentication(), 'confirm'),
             'sessions' => $this->sessions($request)->all(),
+            'accounts' => $this->accountService->getAccounts(),
         ]);
     }
 

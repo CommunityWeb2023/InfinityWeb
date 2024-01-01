@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'),
 
     Route::group(['prefix' => 'user'], function(){
         Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('user.index');
+        Route::post('create/account/', [\App\Http\Controllers\AccountController::class, 'store'])->name('user.create.account');
     });
 
     Route::group(['prefix' => 'vote'], function (){

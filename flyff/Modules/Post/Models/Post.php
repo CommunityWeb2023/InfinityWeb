@@ -6,7 +6,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonInterface;
 use Flyff\Core\Database\Models\Model;
-use Flyff\Modules\User\Models\BelongsToUser;
+use Flyff\Modules\User\Models\Traits\BelongsToUser;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Support\Facades\Storage;

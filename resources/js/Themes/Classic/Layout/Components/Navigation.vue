@@ -187,7 +187,7 @@ export default {
         <!-- mobile -->
         <DisclosurePanel class="md:hidden bg-white">
             <div class="space-y-1 pb-3 pt-2">
-                <DisclosureButton as="a" v-for="item in navigation" href="#" :class="item.current ? 'bg-blue-50 border-blue-500 text-blue-700' : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'" class="block border-l-4 py-2 pl-3 pr-4 text-base font-medium sm:pl-5 sm:pr-6">
+                <DisclosureButton as="a" v-for="item in navigation" :href="item.href" :class="item.current ? 'bg-blue-50 border-blue-500 text-blue-700' : 'border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700'" class="block border-l-4 py-2 pl-3 pr-4 text-base font-medium sm:pl-5 sm:pr-6">
                     {{ item.name }}
                 </DisclosureButton>
                 <!-- Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" -->
@@ -201,9 +201,12 @@ export default {
                     </div>
                 </div>
                 <div class="mt-3 space-y-1">
-                    <DisclosureButton as="a" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6">Your Profile</DisclosureButton>
-                    <DisclosureButton as="a" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6">Settings</DisclosureButton>
-                    <DisclosureButton as="a" href="#" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6">Sign out</DisclosureButton>
+                    <DisclosureButton as="a" :href="route('user.index')" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6">Your Profile</DisclosureButton>
+                    <DisclosureButton as="a" :href="route('shop.index')" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6">Shop</DisclosureButton>
+                    <DisclosureButton as="a" :href="route('vote.index')" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6">Vote</DisclosureButton>
+                    <DisclosureButton as="a" :href="route('vote.index')" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6">Donate</DisclosureButton>
+                    <DisclosureButton v-if="$page.props.view_dashboard" as="a" :href="route('dashboard')" class="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800 sm:px-6 border-t border-b border-dashed">Dashboard</DisclosureButton>
+                    <DisclosureButton as="a" href="#" class="block px-4 py-2 text-base font-medium text-red-500 hover:bg-gray-100 hover:text-red-800 sm:px-6">Sign out</DisclosureButton>
                 </div>
             </div>
             <div class="border-t border-gray-200 pb-3 pt-4" v-else>
