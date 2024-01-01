@@ -82,7 +82,7 @@ export default {
                 <h2 class="text-xl font-semibold">Accounts</h2>
 
                 <div class="my-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                    <div class="border border-gray-300 p-4 rounded-lg h-auto text-xs" v-for="account in accounts">
+                    <div class="border border-gray-300 p-4 rounded-lg h-44 overflow-x-scroll text-xs" v-for="account in accounts">
                         <div class="flex justify-between items-center border-b border-dashed pb-2 font-semibold mb-2">
                             <div class="capitalize text-sm">{{ account.account }}</div>
                             <div class="rounded-full !text-xs h-5 w-5 flex items-center justify-center bg-blue-500 text-white">
@@ -97,7 +97,7 @@ export default {
                         </div>
 
                     </div>
-                    <button @click="showCreateAccountModal = true" type="button" class="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    <button @click="showCreateAccountModal = true" type="button" class="h-44 relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         <PlusCircleIcon class="mx-auto h-12 w-12 text-gray-400" />
                         <span class="mt-2 block text-sm font-semibold text-gray-900">
                             Create Account
