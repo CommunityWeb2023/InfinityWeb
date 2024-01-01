@@ -1,6 +1,6 @@
 <?php
 
-namespace Flyff\Modules\User\Models;
+namespace Flyff\Modules\User\Models\Traits;
 
 use App\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;

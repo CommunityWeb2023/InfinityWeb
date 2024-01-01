@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @property string $title
  * @property string $slogan
  * @property string $description
+ * @property string $password_hash
  * @property string $logo
  * @property int $exp_rate
  * @property int $drop_rate
@@ -39,6 +40,7 @@ class Setting extends Model
         'exp_rate',
         'drop_rate',
         'penya_rate',
+        'password_hash',
         'discord',
         'facebook',
         'youtube',

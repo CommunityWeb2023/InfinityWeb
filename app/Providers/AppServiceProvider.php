@@ -21,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(SettingService $settingService): void
     {
-        config(['app.timezone' => $settingService->getSetting()->timezone]);
+        //config(['app.timezone' => $settingService->getSetting()->timezone]);
     }
 }
