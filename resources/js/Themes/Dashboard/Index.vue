@@ -1,20 +1,19 @@
 <script>
-import DashboardLayout from "@/Layouts/DashboardLayout.vue";
-import {usePage} from "@inertiajs/vue3";
+import Dashboard from "@/Layouts/Dashboard.vue";
+import { usePage } from "@inertiajs/vue3";
 
 export default {
     name: "Index",
-    methods: {usePage},
-    components: {DashboardLayout}
+    methods: { usePage },
+    components: { Dashboard }
 }
 </script>
 
 <template>
-    <DashboardLayout :title="'Welcome, ' + usePage().props.auth.user.username">
+    <Dashboard :title="'Welcome, ' + usePage().props.auth.user.username">
 
-    </DashboardLayout>
+    </Dashboard>
 </template>
 
 <style scoped>
-
 </style>

@@ -1,7 +1,7 @@
 <script>
 
 import {Head} from "@inertiajs/vue3";
-import Navigation from "@/Themes/Classic/Layout/Components/Navigation.vue";
+import Header from "@/Themes/Classic/Layout/Components/Header.vue";
 import Splashloader from "@/Themes/Classic/Layout/Components/Splashloader.vue";
 import Footer from "@/Themes/Classic/Layout/Components/Footer.vue";
 import Sidebar from "@/Themes/Classic/Layout/Components/Sidebar.vue";
@@ -16,7 +16,7 @@ export default {
         CookieConsentButton,
         Splashloader,
         Sidebar,
-        Navigation,
+        Header,
         Head,
         Footer, XMarkIcon
     },
@@ -48,7 +48,7 @@ export default {
     <Head :title="title" />
 
     <div class="bg-[url('/storage/images/flyff-example.jpeg')] bg-top bg-no-repeat">
-        <Navigation />
+        <Header />
 
         <Season />
         <!-- Header -->
