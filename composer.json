@@ -19,7 +19,8 @@
         "meilisearch/meilisearch-php": "^1.5",
         "spatie/laravel-permission": "^6.2",
         "tightenco/ziggy": "^1.0",
-        "torann/geoip": "^3.0"
+        "torann/geoip": "^3.0",
+        "yadahan/laravel-authentication-log": "^1.6"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cdb0e3e906ba526d009b23a19b68252f",
+    "content-hash": "3958ba2eee1d5eb00ac9cf6bce89b9e9",
     "packages": [
         {
             "name": "ahmedsaoud31/laravel-permission-to-vuejs",
@@ -7137,6 +7137,78 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "yadahan/laravel-authentication-log",
+            "version": "v1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yadahan/laravel-authentication-log.git",
+                "reference": "4a74b217db8565271bc3c51c8f74768a5ddba0f1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yadahan/laravel-authentication-log/zipball/4a74b217db8565271bc3c51c8f74768a5ddba0f1",
+                "reference": "4a74b217db8565271bc3c51c8f74768a5ddba0f1",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/auth": "^7.30.4|^8.40.0|^9.0|^10.0",
+                "illuminate/bus": "^7.30.4|^8.40.0|^9.0|^10.0",
+                "illuminate/console": "^7.30.4|^8.40.0|^9.0|^10.0",
+                "illuminate/contracts": "^7.30.4|^8.40.0|^9.0|^10.0",
+                "illuminate/database": "^7.30.4|^8.40.0|^9.0|^10.0",
+                "illuminate/http": "^7.30.4|^8.40.0|^9.0|^10.0",
+                "illuminate/notifications": "^7.30.4|^8.40.0|^9.0|^10.0",
+                "illuminate/support": "^7.30.4|^8.40.0|^9.0|^10.0",
+                "php": "^7.2.5|^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^5.0|^6.0|^7.0|^8.0",
+                "phpunit/phpunit": "^8.4|^9.3.3|^10.0"
+            },
+            "suggest": {
+                "guzzlehttp/guzzle": "Required to use the Slack transport (~6.0)",
+                "nexmo/client": "Required to use the Nexmo transport (~1.0)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Yadahan\\AuthenticationLog\\AuthenticationLogServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Yadahan\\AuthenticationLog\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yaakov Dahan",
+                    "email": "yakidehan@gmail.com"
+                }
+            ],
+            "description": "Laravel Authentication Log provides authentication logger and notification for Laravel.",
+            "keywords": [
+                "Authentication",
+                "laravel",
+                "log",
+                "notification"
+            ],
+            "support": {
+                "issues": "https://github.com/yadahan/laravel-authentication-log/issues",
+                "source": "https://github.com/yadahan/laravel-authentication-log/tree/v1.6.0"
+            },
+            "time": "2023-02-15T19:30:41+00:00"
         }
     ],
     "packages-dev": [

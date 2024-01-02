@@ -1,5 +1,4 @@
 <script>
-import Dashboard from "@/Layouts/Dashboard.vue";
 import { useForm } from "@inertiajs/vue3";
 import { Quill, QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
@@ -10,7 +9,6 @@ import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 export default {
     name: "AddItem",
     components: {
-        Dashboard,
         ArrowPathIcon, RocketLaunchIcon,
         QuillEditor,
         Dashboard,

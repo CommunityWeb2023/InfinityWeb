@@ -14,6 +14,7 @@ use Laravel\Scout\Searchable;
 use LaravelAndVueJS\Traits\LaravelPermissionToVueJS;
 use Spatie\Permission\Traits\HasRoles;
 use Cog\Contracts\Ban\Bannable as BannableInterface;
+use Yadahan\AuthenticationLog\AuthenticationLogable;
 
 class User extends Authenticatable implements BannableInterface
 {
@@ -27,6 +28,7 @@ class User extends Authenticatable implements BannableInterface
     use Searchable;
     use HasAccounts;
     use Bannable;
+    use AuthenticationLogable;
     /**
      * The attributes that are mass assignable.
      *
@@ -68,8 +70,22 @@ class User extends Authenticatable implements BannableInterface
     protected $appends = [
         'profile_photo_url',
         'first_role',
-        'isBanned'
+        'isBanned',
+        'last_login_at',
+        'last_login_ip',
     ];
+
+    public function getLastLoginAtAttribute(): string
+    {
+        return $this->lastLoginAt()->format('l, d F Y - H:i:s') ?? 'Never';
+    }
+
+    public function getLastLoginIpAttribute(): string
+    {
+        $ip = $this->lastLoginIp();
+        return substr($ip, 0, 3) . '.***.' . substr($ip, -3) ?? 'Never';
+    }
+
 
     public function getProfilePhotoUrlAttribute(): string
     {

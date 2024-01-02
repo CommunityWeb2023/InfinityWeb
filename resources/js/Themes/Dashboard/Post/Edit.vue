@@ -1,5 +1,4 @@
 <script>
-import Dashboard from "@/Layouts/Dashboard.vue";
 import { router, useForm } from "@inertiajs/vue3";
 import { Quill, QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
@@ -13,8 +12,7 @@ export default {
     name: "Edit",
     components: {
         Dashboard,
-        QuillEditor,
-        Dashboard, Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions,
+        QuillEditor, Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions,
         CheckIcon, ChevronUpDownIcon, PhotoIcon, ArrowPathIcon, RocketLaunchIcon,
     },
     props: ['post', 'categories'],

@@ -1,5 +1,4 @@
 <script>
-import Dashboard from "@/Layouts/Dashboard.vue";
 import Paginate from "@/Components/Global/Paginate.vue";
 import {MagnifyingGlassCircleIcon, XMarkIcon} from "@heroicons/vue/24/outline/index.js";
 import {router, useForm} from "@inertiajs/vue3";
@@ -8,7 +7,6 @@ import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 export default {
     name: "Index",
     components: {
-        Dashboard,
         Paginate,
         Dashboard,
         MagnifyingGlassCircleIcon, XMarkIcon

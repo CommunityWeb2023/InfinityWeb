@@ -1,6 +1,20 @@
 <script>
 import { Dialog, DialogPanel, Menu, MenuButton, MenuItem, MenuItems, TransitionChild, TransitionRoot, Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { Bars3Icon, BellIcon, CalendarIcon, ChartPieIcon, Cog6ToothIcon, DocumentDuplicateIcon, FolderIcon, HomeIcon, UsersIcon, XMarkIcon, ChevronRightIcon} from '@heroicons/vue/24/outline'
+import {
+    Bars3Icon,
+    BellIcon,
+    CalendarIcon,
+    ChartPieIcon,
+    FolderOpenIcon,
+    Cog6ToothIcon,
+    DocumentDuplicateIcon,
+    FolderIcon,
+    HomeIcon,
+    UsersIcon,
+    XMarkIcon,
+    ChevronRightIcon,
+    ArrowDownTrayIcon, BookOpenIcon, ListBulletIcon, KeyIcon, ScaleIcon, ChatBubbleLeftRightIcon, NewspaperIcon
+} from '@heroicons/vue/24/outline'
 import { ChevronDownIcon, MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import {Head} from "@inertiajs/vue3";
 export default {
@@ -26,33 +40,45 @@ export default {
         UsersIcon,
         XMarkIcon,
         ChevronDownIcon,
-        MagnifyingGlassIcon,  Disclosure, DisclosureButton, DisclosurePanel, ChevronRightIcon
+        MagnifyingGlassIcon,  Disclosure, DisclosureButton, DisclosurePanel, ChevronRightIcon, FolderOpenIcon, ArrowDownTrayIcon
     },
     props: {
         title: {
             type: String,
             default: 'Dashboard'
+        },
+        fullPage: {
+            type: Boolean,
+            default: false
         }
     },
     data() {
         return {
             sidebarOpen: false,
             navigation: [
-                { name: 'Dashboard', href: route('dashboard'), icon: HomeIcon, current: route().current('dashboard') },
+                { name: 'Dashboard', href: route('dashboard'), icon: ChartPieIcon, current: route().current('dashboard') },
+                { name: 'separate' },
                 { name: 'Sites', href: '#', icon: DocumentDuplicateIcon, current: false, dropDown: true, subNavigation: [
-                        { name: 'Post', href: route('post.index'), icon: DocumentDuplicateIcon, current: route().current('post.*') },
-                        { name: 'Downloads', href: '#', icon: DocumentDuplicateIcon, current: false },
-                        { name: 'Guides', href: '#', icon: DocumentDuplicateIcon, current: false },
-                        { name: 'Features', href: '#', icon: DocumentDuplicateIcon, current: false },
-                        { name: 'Rules', href: '#', icon: DocumentDuplicateIcon, current: false },
-                        { name: 'FAQs', href: '#', icon: DocumentDuplicateIcon, current: false },
+                        { name: 'Post', href: route('post.index'), icon: NewspaperIcon, current: route().current('post.*') },
+                        { name: 'Downloads', href: '#', icon: ArrowDownTrayIcon, current: false },
+                        { name: 'Guides', href: '#', icon: BookOpenIcon, current: false },
+                        { name: 'Features', href: '#', icon: ListBulletIcon, current: false },
+                        { name: 'Rules', href: '#', icon: ScaleIcon, current: false },
+                        { name: 'FAQs', href: '#', icon: ChatBubbleLeftRightIcon, current: false },
                     ]
                 },
                 { name: 'Shop', href: '#', icon: DocumentDuplicateIcon, current: false, dropDown: true, subNavigation: [
                         { name: 'Item Database', href: route('item.index'), icon: DocumentDuplicateIcon, current: route().current('item.index') },
                     ]
                 },
-                { name: 'Users', href: '#', icon: UsersIcon, current: false},
+                { name: 'Search', href: '#', icon: DocumentDuplicateIcon, current: false, dropDown: true, subNavigation: [
+                        { name: 'Web Accounts', href: route('item.index'), icon: MagnifyingGlassIcon, current: route().current('item.index') },
+                        { name: 'Accounts', href: route('item.index'), icon: MagnifyingGlassIcon, current: route().current('item.index') },
+                        { name: 'Characters', href: route('item.index'), icon: MagnifyingGlassIcon, current: route().current('item.index') },
+                        { name: 'Guilds', href: route('item.index'), icon: MagnifyingGlassIcon, current: route().current('item.index') },
+                    ]
+                },
+                { name: 'separate' },
                 { name: 'Projects', href: '#', icon: FolderIcon, current: false },
                 { name: 'Calendar', href: '#', icon: CalendarIcon, current: false },
                 { name: 'Documents', href: '#', icon: DocumentDuplicateIcon, current: false },
@@ -60,10 +86,15 @@ export default {
             ],
             userNavigation: [
                 { name: 'Your profile', href: '#' },
-                { name: 'Sign out', href: '#' },
+                { name: 'Sign out', href: '#', click: this.logout },
             ]
         }
-    }
+    },
+    methods: {
+        logout() {
+            this.$inertia.post(route('logout'));
+        }
+    },
 }
 </script>
 
@@ -89,29 +120,36 @@ export default {
                             </TransitionChild>
                             <!-- Sidebar component, swap this element with another sidebar if you like -->
                             <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4 ring-1 ring-white/10">
-                                <div class="flex h-16 shrink-0 items-center">
-                                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+                                <div class="flex h-16 shrink-0 items-center justify-center">
+                                    <h1 class="font-bold text-white">
+                                        Infinity<span class="font-light text-gray-400">Admin</span>
+                                    </h1>
                                 </div>
                                 <nav class="flex flex-1 flex-col">
                                     <ul role="list" class="flex flex-1 flex-col gap-y-7">
                                         <li>
                                             <ul role="list" class="-mx-2 space-y-1">
                                                 <li v-for="item in navigation" :key="item.name">
-                                                    <a v-if="!item.dropDown" :href="item.href" :class="[item.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                                                    <a v-if="!item.dropDown && item.name !== 'separate'" :href="item.href" :class="[item.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
                                                         <component :is="item.icon" class="h-6 w-6 shrink-0" aria-hidden="true" />
                                                         {{ item.name }}
                                                     </a>
-                                                    <Disclosure as="div" v-else v-slot="{ open }">
+                                                    <Disclosure as="div" v-else-if="item.name !== 'separate'" v-slot="{ open }">
                                                         <DisclosureButton :class="[item.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold w-full']">
-                                                            <ChevronRightIcon :class="[open ? 'rotate-90 text-gray-500' : 'text-gray-400', 'h-5 w-5 shrink-0']" aria-hidden="true" />
+                                                            <FolderIcon class="h-5 w-5 shrink-0 text-gray-400" v-if="!open" aria-hidden="true" />
+                                                            <FolderOpenIcon class="h-5 w-5 shrink-0 text-gray-300" v-else aria-hidden="true" />
                                                             {{ item.name }}
                                                         </DisclosureButton>
                                                         <DisclosurePanel as="ul" class="mt-1 px-2">
                                                             <li v-for="subItem in item.subNavigation" :key="subItem.name">
-                                                                <DisclosureButton as="a" :href="subItem.href" :class="[subItem.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md py-2 pr-2 pl-9 text-sm leading-6 font-semibold']">{{ subItem.name }}</DisclosureButton>
+                                                                <DisclosureButton as="a" :href="subItem.href" :class="[subItem.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-2 rounded-md py-2 pr-2 pl-3 items-center text-sm leading-6 font-semibold']">
+                                                                    <component :is="subItem.icon" class="h-5 w-5 shrink-0" aria-hidden="true" />
+                                                                    {{ subItem.name }}
+                                                                </DisclosureButton>
                                                             </li>
                                                         </DisclosurePanel>
                                                     </Disclosure>
+                                                    <div v-else class="border border-dashed border-gray-700 my-2"></div>
                                                 </li>
                                             </ul>
                                         </li>
@@ -134,29 +172,36 @@ export default {
         <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
             <!-- Sidebar component, swap this element with another sidebar if you like -->
             <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
-                <div class="flex h-16 shrink-0 items-center">
-                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500" alt="Your Company" />
+                <div class="flex h-16 shrink-0 items-center justify-center">
+                    <h1 class="font-bold text-white">
+                        Infinity<span class="font-light text-gray-400">Admin</span>
+                    </h1>
                 </div>
                 <nav class="flex flex-1 flex-col">
                     <ul role="list" class="flex flex-1 flex-col gap-y-7">
                         <li>
                             <ul role="list" class="-mx-2 space-y-1">
                                 <li v-for="item in navigation" :key="item.name">
-                                    <a v-if="!item.dropDown" :href="item.href" :class="[item.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
+                                    <a v-if="!item.dropDown && item.name !== 'separate'" :href="item.href" :class="[item.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold']">
                                         <component :is="item.icon" class="h-6 w-6 shrink-0" aria-hidden="true" />
                                         {{ item.name }}
                                     </a>
-                                    <Disclosure as="div" v-else v-slot="{ open }" :default-open="item.subNavigation.some(subItem => subItem.current)">
+                                    <Disclosure as="div" v-else-if="item.name !== 'separate'" v-slot="{ open }" :default-open="item.subNavigation.some(subItem => subItem.current)">
                                         <DisclosureButton :class="[item.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold w-full']">
-                                            <ChevronRightIcon :class="[open ? 'rotate-90 text-gray-500' : 'text-gray-400', 'h-5 w-5 shrink-0']" aria-hidden="true" />
+                                            <FolderIcon class="h-5 w-5 shrink-0 text-gray-400" v-if="!open" aria-hidden="true" />
+                                            <FolderOpenIcon class="h-5 w-5 shrink-0 text-gray-300" v-else aria-hidden="true" />
                                             {{ item.name }}
                                         </DisclosureButton>
                                         <DisclosurePanel as="ul" class="mt-1 px-2">
                                             <li v-for="subItem in item.subNavigation" :key="subItem.name">
-                                                <DisclosureButton as="a" :href="subItem.href" :class="[subItem.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-3 rounded-md py-2 pr-2 pl-9 text-sm leading-6 font-semibold']">{{ subItem.name }}</DisclosureButton>
+                                                <DisclosureButton as="a" :href="subItem.href" :class="[subItem.current ? 'bg-gray-800 text-white' : 'text-gray-400 hover:text-white hover:bg-gray-800', 'group flex gap-x-2 rounded-md py-2 pr-2 pl-3 items-center text-sm leading-6 font-semibold']">
+                                                    <component :is="subItem.icon" class="h-5 w-5 shrink-0" aria-hidden="true" />
+                                                    {{ subItem.name }}
+                                                </DisclosureButton>
                                             </li>
                                         </DisclosurePanel>
                                     </Disclosure>
+                                    <div v-else class="border border-dashed border-gray-700 my-2"></div>
                                 </li>
                             </ul>
                         </li>
@@ -188,16 +233,18 @@ export default {
                         <Menu as="div" class="relative">
                             <MenuButton class="-m-1.5 flex items-center p-1.5">
                                 <span class="sr-only">Open user menu</span>
-                                <img class="h-8 w-8 rounded-full bg-gray-50" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" />
+                                <img class="h-8 w-8 rounded-full bg-gray-50" :src="$page.props.auth.user.profile_photo_url" alt="" />
                                 <span class="hidden lg:flex lg:items-center">
-                                  <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">Tom Cook</span>
+                                  <span class="ml-4 text-sm font-semibold leading-6 text-gray-900" aria-hidden="true">
+                                      {{ $page.props.auth.user.username }}
+                                  </span>
                                   <ChevronDownIcon class="ml-2 h-5 w-5 text-gray-400" aria-hidden="true" />
                                 </span>
                             </MenuButton>
                             <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
                                 <MenuItems class="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none">
                                     <MenuItem v-for="item in userNavigation" :key="item.name" v-slot="{ active }">
-                                        <a :href="item.href" :class="[active ? 'bg-gray-50' : '', 'block px-3 py-1 text-sm leading-6 text-gray-900']">{{ item.name }}</a>
+                                        <a :href="item.href" @click="item.click" :class="[active ? 'bg-gray-50' : '', 'block px-3 py-1 text-sm leading-6 text-gray-900']">{{ item.name }}</a>
                                     </MenuItem>
                                 </MenuItems>
                             </transition>
@@ -207,7 +254,7 @@ export default {
             </div>
 
             <main class="py-10">
-                <div class="px-4 sm:px-6 lg:px-8">
+                <div :class="fullPage ? '' : 'px-4 sm:px-6 lg:px-8'">
                     <slot />
                 </div>
             </main>

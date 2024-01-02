@@ -26,4 +26,28 @@ class UserService
         $user->votepoints += $amount;
         $this->userRepository->saveUser($user);
     }
+
+    public function getLastUsersToday()
+    {
+        return $this->userRepository->getLastUsersToday();
+    }
+
+    public function getLastUserYesterday()
+    {
+        return $this->userRepository->getLastUserYesterday();
+    }
+
+    // function to get the average between today and yesterday in percent (e.g. 50%)
+    public function getAvgBetweenUsersTodayAndYesterday()
+    {
+        $today = $this->getLastUsersToday();
+        $yesterday = $this->getLastUserYesterday();
+        $todayCount = count($today);
+        $yesterdayCount = count($yesterday);
+        if ($todayCount == 0 || $yesterdayCount == 0){
+            return 0;
+        }
+        $avg = ($todayCount / $yesterdayCount) * 100;
+        return round($avg, 2);
+    }
 }

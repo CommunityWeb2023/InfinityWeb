@@ -40,7 +40,6 @@ export default {
 
 <template>
     <Classic title="Profile" :hasSidebar="true">
-
         <div class="my-10">
             <div class="bg-white rounded-lg p-4 shadow-md">
                 <div class="flex items-center justify-between gap-4">
@@ -90,6 +89,14 @@ export default {
                     <div class="my-3">
                         <h3 class="font-semibold text-sm">Registered at</h3>
                         <p class="capitalize text-sm">{{ $page.props.auth.user.created_at }}</p>
+                    </div>
+                    <div class="my-3">
+                        <h3 class="font-semibold text-sm">Last login at</h3>
+                        <p class="capitalize text-sm">{{ $page.props.auth.user.last_login_at }}</p>
+                    </div>
+                    <div class="my-3">
+                        <h3 class="font-semibold text-sm">Last login IP</h3>
+                        <p class="capitalize text-sm">{{ $page.props.auth.user.last_login_ip }}</p>
                     </div>
                 </div>
                 <div class="w-1/2">

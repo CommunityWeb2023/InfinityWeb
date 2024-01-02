@@ -1,5 +1,5 @@
 <script>
-import Dashboard from "@/Layouts/Dashboard.vue";
+
 import { MagnifyingGlassCircleIcon, PencilSquareIcon, TrashIcon, XMarkIcon } from "@heroicons/vue/24/outline/index.js";
 import ConfirmDeleteModal from "@/Components/Global/Modals/ConfirmDeleteModal.vue";
 import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
@@ -7,7 +7,6 @@ import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 export default {
     name: "Index",
     components: {
-        Dashboard,
         ConfirmDeleteModal,
         Dashboard,
         TrashIcon,
