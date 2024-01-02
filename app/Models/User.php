@@ -77,12 +77,13 @@ class User extends Authenticatable implements BannableInterface
 
     public function getLastLoginAtAttribute(): string
     {
-        return $this->lastLoginAt()->format('l, d F Y - H:i:s') ?? 'Never';
+        return $this->lastLoginAt()?->format('l, d F Y - H:i:s') ?? 'Never';
     }
 
     public function getLastLoginIpAttribute(): string
     {
         $ip = $this->lastLoginIp();
+        if ($ip === null) return 'Never';
         return substr($ip, 0, 3) . '.***.' . substr($ip, -3) ?? 'Never';
     }
 
