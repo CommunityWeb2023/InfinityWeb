@@ -32,7 +32,7 @@ Route::group(['prefix' => 'ranking'], function (){
     Route::get('guilds', [\App\Http\Controllers\RankingController::class, 'guilds'])->name('ranking.guilds');
 });
 
-Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified',]] , function (){
+Route::group(['middleware' => ['auth:sanctum', config('jetstream.auth_session'), 'verified', 'forbid-banned-user', 'logs-out-banned-user']] , function (){
 
     Route::group(['prefix' => 'user'], function(){
         Route::get('/', [\App\Http\Controllers\UserController::class, 'index'])->name('user.index');
@@ -57,7 +57,7 @@ Route::group([
             config('jetstream.auth_session'),
             'verified',
             'role:administrator|game_master|support',
-            'permission:view dashboard'
+            'permission:view dashboard', 'forbid-banned-user', 'logs-out-banned-user'
         ],
         'prefix' => 'dashboard'
     ], function(){

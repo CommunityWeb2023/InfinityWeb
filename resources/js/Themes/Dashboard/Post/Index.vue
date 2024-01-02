@@ -2,10 +2,12 @@
 import Dashboard from "@/Layouts/Dashboard.vue";
 import { MagnifyingGlassCircleIcon, PencilSquareIcon, TrashIcon, XMarkIcon } from "@heroicons/vue/24/outline/index.js";
 import ConfirmDeleteModal from "@/Components/Global/Modals/ConfirmDeleteModal.vue";
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 
 export default {
     name: "Index",
     components: {
+        Dashboard,
         ConfirmDeleteModal,
         Dashboard,
         TrashIcon,
@@ -131,10 +133,9 @@ export default {
             </div>
         </div>
     </div>
-
-    <ConfirmDeleteModal v-if="showConfirmDeleteModal" @close="closeConfirmDeleteModal" @cancel="closeConfirmDeleteModal"
-        title="Delete Post" description="Are you sure you want to delete this post?" @confirm="deletePost" />
-</Dashboard></template>
+        <ConfirmDeleteModal v-if="showConfirmDeleteModal" @close="closeConfirmDeleteModal" @cancel="closeConfirmDeleteModal" title="Delete Post" description="Are you sure you want to delete this post?" @confirm="deletePost" />
+    </Dashboard>
+</template>
 
 <style scoped>
 </style>

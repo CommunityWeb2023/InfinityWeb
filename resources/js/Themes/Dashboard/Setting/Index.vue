@@ -3,10 +3,12 @@ import Dashboard from "@/Layouts/Dashboard.vue";
 import { useForm } from "@inertiajs/vue3";
 import { ArrowPathIcon, RocketLaunchIcon } from "@heroicons/vue/24/outline/index.js";
 import { Switch, SwitchDescription, SwitchGroup, SwitchLabel } from '@headlessui/vue'
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 
 export default {
     name: "Index",
     components: {
+        Dashboard,
         ArrowPathIcon, RocketLaunchIcon,
         Dashboard,
         Switch, SwitchDescription, SwitchGroup, SwitchLabel

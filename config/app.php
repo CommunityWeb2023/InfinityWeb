@@ -174,6 +174,7 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         \Torann\GeoIP\GeoIPServiceProvider::class,
+        Cog\Laravel\Ban\Providers\BanServiceProvider::class,
     ])->toArray(),
 
     /*

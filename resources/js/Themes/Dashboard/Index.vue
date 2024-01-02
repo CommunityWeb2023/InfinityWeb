@@ -1,11 +1,11 @@
 <script>
-import Dashboard from "@/Layouts/Dashboard.vue";
-import { usePage } from "@inertiajs/vue3";
+import {usePage} from "@inertiajs/vue3";
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 
 export default {
     name: "Index",
-    methods: { usePage },
-    components: { Dashboard }
+    methods: {usePage},
+    components: {Dashboard}
 }
 </script>
 
