@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Cog\Laravel\Ban\Traits\Bannable;
 use Flyff\Modules\User\Models\Traits\HasAccounts;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -12,8 +13,9 @@ use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
 use LaravelAndVueJS\Traits\LaravelPermissionToVueJS;
 use Spatie\Permission\Traits\HasRoles;
+use Cog\Contracts\Ban\Bannable as BannableInterface;
 
-class User extends Authenticatable
+class User extends Authenticatable implements BannableInterface
 {
     use HasApiTokens;
     use HasFactory;
@@ -24,6 +26,7 @@ class User extends Authenticatable
     use HasRoles;
     use Searchable;
     use HasAccounts;
+    use Bannable;
     /**
      * The attributes that are mass assignable.
      *
@@ -54,6 +57,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'created_at' => 'datetime:l, d F Y',
     ];
 
     /**
@@ -63,11 +67,23 @@ class User extends Authenticatable
      */
     protected $appends = [
         'profile_photo_url',
+        'first_role',
+        'isBanned'
     ];
 
     public function getProfilePhotoUrlAttribute(): string
     {
         return 'https://ui-avatars.com/api/?name='. $this->username[0] .'&color=7F9CF5&background=EBF4FF';
+    }
+
+    public function getFirstRoleAttribute(): string
+    {
+        return $this->roles->first()->name;
+    }
+
+    public function getIsBannedAttribute(): bool
+    {
+        return $this->isBanned();
     }
 
     public function searchableAs()

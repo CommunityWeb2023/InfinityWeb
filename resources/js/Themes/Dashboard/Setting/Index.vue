@@ -3,10 +3,12 @@ import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import {useForm} from "@inertiajs/vue3";
 import {ArrowPathIcon, RocketLaunchIcon} from "@heroicons/vue/24/outline/index.js";
 import { Switch, SwitchDescription, SwitchGroup, SwitchLabel } from '@headlessui/vue'
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 
 export default {
     name: "Index",
     components: {
+        Dashboard,
         ArrowPathIcon, RocketLaunchIcon,
         DashboardLayout,
         Switch, SwitchDescription, SwitchGroup, SwitchLabel
@@ -53,7 +55,7 @@ export default {
 </script>
 
 <template>
-    <DashboardLayout>
+    <Dashboard>
         <div class="my-10">
             <SwitchGroup as="div" class="flex items-center justify-between">
                 <span class="flex flex-grow flex-col">
@@ -305,7 +307,7 @@ export default {
                 </div>
             </div>
         </div>
-    </DashboardLayout>
+    </Dashboard>
 </template>
 
 <style scoped>

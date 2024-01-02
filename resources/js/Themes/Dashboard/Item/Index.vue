@@ -3,10 +3,12 @@ import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import Paginate from "@/Components/Global/Paginate.vue";
 import {MagnifyingGlassCircleIcon, XMarkIcon} from "@heroicons/vue/24/outline/index.js";
 import {router, useForm} from "@inertiajs/vue3";
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 
 export default {
     name: "Index",
     components: {
+        Dashboard,
         Paginate,
         DashboardLayout,
         MagnifyingGlassCircleIcon, XMarkIcon
@@ -40,7 +42,7 @@ export default {
 </script>
 
 <template>
-    <DashboardLayout title="Item Database">
+    <Dashboard title="Item Database">
 
         <div class="flex items-center justify-end">
             <div class="relative mt-2 rounded-md shadow-sm flex items-center">
@@ -99,7 +101,7 @@ export default {
            <Paginate :links="items.links" />
        </div>
 
-    </DashboardLayout>
+    </Dashboard>
 </template>
 
 <style scoped>

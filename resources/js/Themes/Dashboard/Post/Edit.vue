@@ -7,10 +7,12 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 import {ArrowPathIcon, PhotoIcon, RocketLaunchIcon} from "@heroicons/vue/24/outline/index.js";
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 
 export default {
     name: "Edit",
     components: {
+        Dashboard,
         QuillEditor,
         DashboardLayout, Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions,
         CheckIcon, ChevronUpDownIcon, PhotoIcon, ArrowPathIcon, RocketLaunchIcon,
@@ -82,7 +84,7 @@ export default {
 </script>
 
 <template>
-    <DashboardLayout :title="'Edit ' + post.title">
+    <Dashboard :title="'Edit ' + post.title">
 
        <form @submit.prevent="submit">
            <div class="py-4">
@@ -155,7 +157,7 @@ export default {
                 </button>
             </div>
        </form>
-    </DashboardLayout>
+    </Dashboard>
 </template>
 
 <style scoped>

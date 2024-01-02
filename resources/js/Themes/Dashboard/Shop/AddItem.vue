@@ -6,9 +6,11 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import {ArrowPathIcon, PhotoIcon, RocketLaunchIcon} from "@heroicons/vue/24/outline/index.js";
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 export default {
     name: "AddItem",
     components: {
+        Dashboard,
         ArrowPathIcon, RocketLaunchIcon,
         QuillEditor,
         DashboardLayout,
@@ -52,7 +54,7 @@ export default {
 </script>
 
 <template>
-    <DashboardLayout title="Add Item">
+    <Dashboard title="Add Item">
 
 
         <div class="grid grid-cols-4 grid-rows-3 gap-4 mb-5">
@@ -170,7 +172,7 @@ export default {
             </div>
         </div>
 
-    </DashboardLayout>
+    </Dashboard>
 </template>
 
 <style scoped>

@@ -77,6 +77,44 @@ export default {
             </div>
         </div>
 
+        <div class="bg-white rounded-lg p-4 shadow-md">
+            <div class="flex gap-10">
+                <div class="w-1/2">
+                    <div class="border-b border-dashed w-full pb-2">
+                        <h2 class="font-semibold text-md">General Information</h2>
+                    </div>
+                    <div class="my-3">
+                        <h3 class="font-semibold text-sm">Accountname</h3>
+                        <p class="capitalize text-sm">{{ $page.props.auth.user.username }}</p>
+                    </div>
+                    <div class="my-3">
+                        <h3 class="font-semibold text-sm">Registered at</h3>
+                        <p class="capitalize text-sm">{{ $page.props.auth.user.created_at }}</p>
+                    </div>
+                </div>
+                <div class="w-1/2">
+                    <div class="border-b border-dashed w-full pb-2">
+                        <h2 class="font-semibold text-md">Accountstatus</h2>
+                    </div>
+                    <div class="my-3">
+                        <h3 class="font-semibold text-sm">User group</h3>
+                        <p class="capitalize text-sm">{{ $page.props.auth.user.first_role }}</p>
+                    </div>
+                    <div class="my-3">
+                        <h3 class="font-semibold text-sm">Current status</h3>
+                        <p class="capitalize text-sm">
+                            <span v-if="$page.props.auth.user.isBanned" class="text-red-500">
+                                Banned
+                            </span>
+                            <span v-else class="text-green-500">
+                                Active, have fun!
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="my-10">
             <div class="bg-white rounded-lg p-4 shadow-md">
                 <h2 class="text-xl font-semibold">Accounts</h2>

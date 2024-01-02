@@ -86,7 +86,7 @@ export default {
 </script>
 
 <template>
-    <DashboardLayout title="Add Post">
+    <Dashboard title="Add Post">
         <form @submit.prevent="submit" >
             <div class="py-4">
                 <div v-if="!preview" @click="selectNewImage" @dragover.prevent @drop.stop.prevent="uploadDraggedImage($event)" class="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
@@ -158,7 +158,7 @@ export default {
                 </button>
             </div>
         </form>
-    </DashboardLayout>
+    </Dashboard>
 </template>
 
 <style scoped>

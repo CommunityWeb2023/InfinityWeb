@@ -2,10 +2,12 @@
 import DashboardLayout from "@/Layouts/DashboardLayout.vue";
 import {MagnifyingGlassCircleIcon, PencilSquareIcon, TrashIcon, XMarkIcon} from "@heroicons/vue/24/outline/index.js";
 import ConfirmDeleteModal from "@/Components/Global/Modals/ConfirmDeleteModal.vue";
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 
 export default {
     name: "Index",
     components: {
+        Dashboard,
         ConfirmDeleteModal,
         DashboardLayout,
         TrashIcon,
@@ -49,7 +51,7 @@ export default {
 </script>
 
 <template>
-    <DashboardLayout title="Posts">
+    <Dashboard title="Posts">
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between">
                 <div class="w-64">
@@ -110,7 +112,7 @@ export default {
         </div>
 
         <ConfirmDeleteModal v-if="showConfirmDeleteModal" @close="closeConfirmDeleteModal" @cancel="closeConfirmDeleteModal" title="Delete Post" description="Are you sure you want to delete this post?" @confirm="deletePost" />
-    </DashboardLayout>
+    </Dashboard>
 </template>
 
 <style scoped>
