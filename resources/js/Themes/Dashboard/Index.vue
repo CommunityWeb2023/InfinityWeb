@@ -1,7 +1,7 @@
 <script>
 import {usePage} from "@inertiajs/vue3";
 import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
-import Stats from "@/Themes/Dashboard/Overview/Stats.vue";
+import StatsBanner from "@/Themes/Dashboard/Overview/StatsBanner.vue";
 import StatsToday from "@/Themes/Dashboard/Overview/StatsToday.vue";
 
 export default {
@@ -9,7 +9,7 @@ export default {
     methods: {usePage},
     components: {
         Dashboard,
-        Stats,
+        StatsBanner,
         StatsToday
     },
     props: ['users_today', 'users_avg', 'users_yesterday'],
@@ -29,7 +29,7 @@ export default {
 
 <template>
     <Dashboard :title="'Welcome, ' + usePage().props.auth.user.username" :full-page="true">
-        <Stats :stats="stats" />
+        <StatsBanner :stats="stats" />
 
         <StatsToday :users_today="users_today" />
         <!-- Stats avg -->

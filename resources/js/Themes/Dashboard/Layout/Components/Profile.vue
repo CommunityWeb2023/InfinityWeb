@@ -1,21 +1,19 @@
 <script lang="ts" setup>
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { ChevronDownIcon } from '@heroicons/vue/24/outline'
+import { router } from '@inertiajs/vue3';
 
-interface NavigationItem {
-  name: string;
-  href: string;
-  icon: string;
-  current: boolean;
-  click?: () => void;
+const logout = () => {
+  router.post(route('logout'), {
+  }, {
+    preserveState: false,
+  });
 }
 
-defineProps({
-  userNavigation: {
-    type: Array as () => NavigationItem[],
-    required: true,
-  },
-})
+const userNavigation = [
+  { name: 'Your profile', href: '#' },
+  { name: 'Sign out', href: '#', click: logout },
+]
 </script>
 
 <template>

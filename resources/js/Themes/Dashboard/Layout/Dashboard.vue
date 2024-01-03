@@ -4,7 +4,6 @@ import {
 } from '@heroicons/vue/24/outline'
 import { MagnifyingGlassIcon } from '@heroicons/vue/20/solid'
 import { Head } from "@inertiajs/vue3";
-import { router } from "@inertiajs/vue3";
 import MobileSidebar from "@/Themes/Dashboard/Layout/Components/MobileSidebar.vue";
 import Sidebar from "@/Themes/Dashboard/Layout/Components/Sidebar.vue";
 import Profile from "@/Themes/Dashboard/Layout/Components/Profile.vue";
@@ -22,13 +21,6 @@ defineProps({
 })
 
 const sidebarOpen = ref(false);
-
-const logout = () => {
-  router.post(route('logout'), {
-  }, {
-    preserveState: false,
-  });
-}
 
 const navigation = [
   { name: 'Dashboard', href: route('dashboard'), icon: ChartPieIcon, current: route().current('dashboard') },
@@ -66,11 +58,6 @@ const navigation = [
   { name: 'Reports', href: '#', icon: ChartPieIcon, current: false },
 ]
 
-const userNavigation = [
-  { name: 'Your profile', href: '#' },
-  { name: 'Sign out', href: '#', click: logout },
-]
-
 </script>
 
 <template>
@@ -92,8 +79,7 @@ const userNavigation = [
           <Bars3Icon class="h-6 w-6" aria-hidden="true" />
         </button>
 
-        <!-- Profile -->
-        <Profile :user-navigation="userNavigation" />
+        <Profile />
       </div>
 
       <main class="py-10">
