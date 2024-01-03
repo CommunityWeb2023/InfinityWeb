@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { FolderOpenIcon, Cog6ToothIcon, FolderIcon } from '@heroicons/vue/24/outline'
+import { FolderOpenIcon, Cog6ToothIcon, FolderIcon, GlobeAltIcon } from '@heroicons/vue/24/outline'
 
 interface NavigationItem {
   name: string;
@@ -60,6 +60,11 @@ defineProps({
         </ul>
         </li>
         <li class="mt-auto">
+          <a :href="route('home')"
+            class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">
+            <GlobeAltIcon class="h-6 w-6 shrink-0" aria-hidden="true" />
+            Website
+          </a>
           <a :href="route('setting.index')"
             class="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-400 hover:bg-gray-800 hover:text-white">
             <Cog6ToothIcon class="h-6 w-6 shrink-0" aria-hidden="true" />
