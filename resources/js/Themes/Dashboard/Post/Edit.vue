@@ -88,13 +88,13 @@ export default {
             <div class="py-4">
                 <div v-if="!preview" @click="selectNewImage" @dragover.prevent
                     @drop.stop.prevent="uploadDraggedImage($event)"
-                    class="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    class="relative block w-full rounded-lg border-2 border-dashed border-gray-300 p-12 text-center cursor-pointer hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                     <PhotoIcon class="mx-auto h-12 w-12 text-gray-400" aria-hidden="true" />
 
                     <span class="mt-2 block text-sm font-semibold text-gray-900">Add Image</span>
                 </div>
                 <div v-else @click="selectNewImage" @dragover.prevent @drop.stop.prevent="uploadDraggedImage($event)"
-                    class="relative block w-full rounded-lg border-2 border-dashed border-gray-300 h-48 overflow-x-scroll p-12 text-center hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                    class="relative block w-full rounded-lg border-2 border-dashed border-gray-300 h-48 overflow-x-scroll p-12 text-center cursor-pointer hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                     <img :src="preview" alt="">
                 </div>
                 <input type="file" accept="image/*" @change="updateImage" ref="image" class="form-control-file hidden"
