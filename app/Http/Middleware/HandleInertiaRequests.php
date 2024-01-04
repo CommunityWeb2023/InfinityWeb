@@ -55,9 +55,9 @@ class HandleInertiaRequests extends Middleware
             ],
             'current_timezone' => config('app.timezone'),
             'isDemo' => config('app.demo'),
-            'penya' => config('flyff.penya'),
-            'exp' => config('flyff.exp'),
-            'drop' => config('flyff.drop'),
+            'penya' => $this->settingService->getSetting()->penya_rate,
+            'exp' => $this->settingService->getSetting()->exp_rate,
+            'drop' => $this->settingService->getSetting()->drop_rate,
             'url_parameters' => [
                 'query' => $request->get('query') ?? ''
             ],

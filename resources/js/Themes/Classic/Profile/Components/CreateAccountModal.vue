@@ -57,6 +57,9 @@ export default {
                                             <label for="account" class="block text-sm font-medium w-full leading-6 text-gray-900">Account Name</label>
                                             <div class="mt-2">
                                                 <input type="text" v-model="newAccount.account" name="account" id="account" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" autocomplete="false" autofocus="autofocus"/>
+                                                <div v-show="newAccount.errors.account" class="mt-1 text-xs text-red-500">
+                                                    {{ newAccount.errors.account }}
+                                                </div>
                                             </div>
                                         </div>
 
@@ -64,15 +67,22 @@ export default {
                                             <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Password</label>
                                             <div class="mt-2">
                                                 <input type="password" v-model="newAccount.password" name="password" id="password" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                                <div v-show="newAccount.errors.password" class="mt-1 text-xs text-red-500">
+                                                    {{ newAccount.errors.password }}
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="mb-2">
                                             <label for="password_confirmation" class="block text-sm font-medium leading-6 text-gray-900">Confirm Password</label>
                                             <div class="mt-2">
                                                 <input type="password" v-model="newAccount.password_confirmation" name="password_confirmation" id="password_confirmation" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+                                                <div v-show="newAccount.errors.password_confirmation" class="mt-1 text-xs text-red-500">
+                                                    {{ newAccount.errors.password_confirmation }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="flex justify-between mt-5">
                                         <button type="button" class="inline-flex w-full justify-center rounded-md bg-blue-600 px-3 py-2 text-sm font-light text-white shadow-sm hover:bg-blue-500 sm:w-auto" @click="createAccount">Yes, create</button>
                                         <button type="button" class="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-light text-white shadow-sm hover:bg-red-500 sm:w-auto" @click="$emit('close')" >Cancel</button>

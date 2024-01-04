@@ -27,6 +27,10 @@ Route::get('guides', [\App\Http\Controllers\GuidesController::class, 'index'])->
 Route::get('rules', [\App\Http\Controllers\RuleController::class, 'index'])->name('rules.index');
 Route::get('features', [\App\Http\Controllers\FeaturesController::class, 'index'])->name('features.index');
 
+
+Route::get('team', [\App\Http\Controllers\TeamController::class, 'index'])->name('team.index');
+
+
 Route::group(['prefix' => 'ranking'], function (){
     Route::get('players', [\App\Http\Controllers\RankingController::class, 'indexUser'])->name('ranking.players');
     Route::get('guilds', [\App\Http\Controllers\RankingController::class, 'guilds'])->name('ranking.guilds');

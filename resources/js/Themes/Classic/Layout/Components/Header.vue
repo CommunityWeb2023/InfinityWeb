@@ -62,6 +62,13 @@ const navigation = [
     active: true,
     dropdown: false,
   },
+  {
+    name: 'Team',
+    href: route('team.index'),
+    current: route().current('team.index'),
+    active: true,
+    dropdown: false,
+  },
 ]
 
 const navigationAuth = [
