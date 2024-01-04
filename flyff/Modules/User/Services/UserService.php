@@ -16,6 +16,11 @@ class UserService
         return $this->userRepository->getUserByUsername($username);
     }
 
+    public function getUserById(int $id)
+    {
+        return $this->userRepository->getUserById($id);
+    }
+
     public function update(User $user): void
     {
         $this->userRepository->saveUser($user);
@@ -49,5 +54,34 @@ class UserService
         }
         $avg = ($todayCount / $yesterdayCount) * 100;
         return round($avg, 2);
+    }
+
+    public function getAllUsers(){
+        $users = $this->userRepository->getAllUsers();
+
+        // order and group users by their first letter
+        $users = $users->sortBy('username')->groupBy(function ($item, $key) {
+            return substr($item->username, 0, 1);
+        });
+
+        // add accounts key
+        $users = $users->map(function ($item, $key) {
+            return [
+                'accounts' => $item,
+            ];
+        });
+
+        // add lost letters
+        $alphabet = range('A', 'Z');
+        foreach ($alphabet as $letter){
+            if (!isset($users[$letter])){
+                $users[$letter] = [];
+            }
+        }
+
+        // sort collection alphabetically
+        $users = $users->sortKeys();
+
+        return $users;
     }
 }

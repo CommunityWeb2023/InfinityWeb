@@ -86,6 +86,13 @@ Route::group([
         Route::patch('/update', [\App\Http\Controllers\SettingController::class, 'update'])->name('setting.update');
     });
 
+    Route::group(['prefix' => 'search'], function(){
+       Route::group(['prefix' => 'user'], function (){
+           Route::get('', [\App\Http\Controllers\UserController::class, 'IndexSearchUsers'])->name('search.user.index');
+           Route::get('/{user}', [\App\Http\Controllers\UserController::class, 'show'])->name('search.user.show');
+       });
+    });
+
     /*Route::group([
         'prefix' => 'download'
     ], function() {

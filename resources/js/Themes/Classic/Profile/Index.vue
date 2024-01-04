@@ -40,7 +40,7 @@ export default {
 
 <template>
     <Classic title="Profile" :hasSidebar="true">
-        
+
         <div class="my-10">
             <div class="bg-white rounded-lg p-4 shadow-md">
                 <div class="flex items-center justify-between gap-4">

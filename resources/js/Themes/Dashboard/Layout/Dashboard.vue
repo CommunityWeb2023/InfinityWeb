@@ -45,7 +45,7 @@ const navigation = [
   {
     name: 'Search', href: '#', icon: DocumentDuplicateIcon, current: false, dropDown: true, subNavigation:
       [
-        { name: 'Web Accounts', href: route('item.index'), icon: MagnifyingGlassIcon, current: route().current('item.index') },
+        { name: 'Web Accounts', href: route('search.user.index'), icon: MagnifyingGlassIcon, current: route().current('search.user.*') },
         { name: 'Accounts', href: route('item.index'), icon: MagnifyingGlassIcon, current: route().current('item.index') },
         { name: 'Characters', href: route('item.index'), icon: MagnifyingGlassIcon, current: route().current('item.index') },
         { name: 'Guilds', href: route('item.index'), icon: MagnifyingGlassIcon, current: route().current('item.index') },

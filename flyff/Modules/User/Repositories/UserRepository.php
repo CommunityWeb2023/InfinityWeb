@@ -12,6 +12,11 @@ class UserRepository extends BaseRepository
         return User::where('username', $username)->first();
     }
 
+    public function getAllUsers()
+    {
+        return User::all();
+    }
+
 
     public function saveUser(User $user): void
     {
@@ -26,5 +31,10 @@ class UserRepository extends BaseRepository
     public function getLastUserYesterday()
     {
         return User::where('created_at', '>=', date('Y-m-d', strtotime('-1 day')))->get();
+    }
+
+    public function getUserById(int $id)
+    {
+        return User::where('id', $id)->with(['accounts', 'authentications'])->first();
     }
 }
