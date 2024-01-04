@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Flyff\Modules\Account\Services\AccountService;
 use Flyff\Modules\Settings\Services\SettingService;
+use Flyff\Modules\User\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 use Laravel\Fortify\Features;
 use Laravel\Jetstream\Agent;
 use Laravel\Jetstream\Http\Controllers\Inertia\Concerns\ConfirmsTwoFactorAuthentication;
@@ -20,7 +22,15 @@ class UserController extends Controller
     public function __construct(
         private readonly SettingService $settingService,
         private readonly AccountService $accountService,
+        private readonly UserService $userService,
     ){}
+
+    public function IndexSearchUsers(): \Inertia\Response
+    {
+        return Inertia::render('Dashboard/Search/User/Index', [
+            'users' => $this->userService->getAllUsers(),
+        ]);
+    }
 
     /**
      * Display a listing of the resource.
@@ -89,7 +99,9 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return Inertia::render('Dashboard/Search/User/Show', [
+            'user' => $this->userService->getUserById($id),
+        ]);
     }
 
     /**

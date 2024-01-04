@@ -20,4 +20,6 @@ class DashboardController extends Controller
             'users_avg' => $this->userService->getAvgBetweenUsersTodayAndYesterday(),
         ]);
     }
+
+
 }
