@@ -46,6 +46,7 @@ export default {
 <template>
     <Dashboard title="Search User">
 
+        <!-- Search -->
         <div class="flex items-center justify-end mb-4">
             <div class="relative mt-2 rounded-md shadow-sm">
                 <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -55,7 +56,8 @@ export default {
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5 2xl:grid-cols-7 gap-4">
+            <!-- cards -->
             <div v-for="(userData, userKey) in filteredUsers" :key="userKey" class="rounded-lg border border-dashed">
                 <div class="py-3 px-5 border-b border-dashed flex items-center justify-between">
                     <h2 class="font-semibold text-sm">
@@ -65,7 +67,8 @@ export default {
                         {{ userData.accounts?.length ?? 0 }}
                     </StatsBadge>
                 </div>
-                <div class="p-3 h-44 overflow-x-scroll divide-y divide-gray-300 divide-dashed">
+                <div class="p-3 h-44 divide-y divide-gray-300 divide-dashed">
+                    <!-- accounts -->
                     <div v-for="account in userData.accounts" :key="account.id" class="text-xs py-2">
                         <a :href="route('search.user.show', account.id)" class="text-blue-500 flex items-center gap-2">
                             <UserIcon class="h-4 w-4" />
