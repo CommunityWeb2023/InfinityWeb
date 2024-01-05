@@ -59,7 +59,7 @@ const posts = [
   },
   {
     id: 3,
-    title: 'Some even more meaningful Feature',
+    title: 'Some more meaningful Feature',
     description:
       'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
     imageUrl: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
@@ -75,7 +75,7 @@ const posts = [
   },
   {
     id: 5,
-    title: 'The even more most significant Feature',
+    title: 'The even significanter Feature',
     description:
       'Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.',
     imageUrl: 'https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80',
@@ -103,7 +103,7 @@ const posts = [
                 <h3 class="text-xl font-semibold leading-4 text-gray-900">
                   {{ post.title }}
                 </h3>
-                <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">{{ post.description }}</p>
+                <p class="mt-5 text-base leading-6 text-gray-600">{{ post.description }}</p>
               </div>
               <div class="relative mt-5 flex items-center gap-x-4">
                 <span v-for="category in post.categorys" :key="category"
