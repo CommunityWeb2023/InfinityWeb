@@ -5,6 +5,13 @@ import Classic from "@/Themes/Classic/Layout/Classic.vue";
 // showOnlineStatus: true/false (per person)
 const COLOREDNAMES = true; 
 
+const hasColoredNames = (person) => {
+    if (person) {
+        return COLOREDNAMES ? [colors[person.role]] : 'text-gray-600';
+    }
+    return 'text-gray-600';
+};
+
 const Team = [
     {
         name: 'Whitney Francis',
@@ -71,7 +78,7 @@ const onlineColors = {
                     <li v-for="person in Team" :key="person.name" class="rounded-2xl bg-white shadow-md border border-gray-100 px-6 py-10">
                         <img class="mx-auto h-56 w-56 rounded-full border-[6px]" :src="person.image" :class="{[onlineColors[person.online.toString()]]: person.showOnlineStatus }" alt="" />
                         <h3 class="mt-6 text-base font-semibold leading-7 tracking-tight text-gray-900">{{ person.name }}</h3>
-                        <p class="text-sm leading-6 text-gray-600" :class="{ [colors[person.role]]: COLOREDNAMES }">{{ person.role }}</p>
+                        <p class="text-sm leading-6" :class="hasColoredNames(person)">{{ person.role }}</p>
                         <p class="mt-2 text-sm leading-6 text-gray-600">{{ person.description }}</p>
                     </li>
                 </ul>
