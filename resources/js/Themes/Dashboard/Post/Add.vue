@@ -1,5 +1,4 @@
 <script>
-import Dashboard from "@/Layouts/Dashboard.vue";
 import { router, useForm } from "@inertiajs/vue3";
 import { Quill, QuillEditor } from '@vueup/vue-quill'
 import '@vueup/vue-quill/dist/vue-quill.snow.css';
@@ -7,6 +6,7 @@ import '@vueup/vue-quill/dist/vue-quill.snow.css';
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/vue/20/solid'
 import { ArrowPathIcon, PhotoIcon, RocketLaunchIcon } from "@heroicons/vue/24/outline/index.js";
+import Dashboard from "@/Themes/Dashboard/Layout/Dashboard.vue";
 
 export default {
     name: "Add",
