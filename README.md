@@ -36,9 +36,9 @@ As a community-driven project, we place great emphasis on user involvement and f
 
 
 
-# CommunityWeb 2023 Installation Guide
+# Installation Guide
 
-Install and set up CommunityWeb 2023 for Flyff server operators using Composer and NPM.
+Install and set up InfinityWeb for Flyff server operators using Composer and NPM.
 
 ## Getting Started
 
