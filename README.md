@@ -92,7 +92,7 @@ composer install
 ### Step 3: Install NPM Packages
 Install the necessary NPM packages.
 ```bash
-npm install
+npm install && npm run build 
 ```
 
 ### Step 4: Configure Environment Variables
@@ -110,6 +110,7 @@ php artisan key:generate
 ### Step 6: Update Environment Settings
 Edit the .env file with your database and Flyff server details.
 ```bash
+APP_URL=YOR DOMAIN OR IP
 DB_HOST=YOUR IP OR SERVER
 DB_PORT=YOUR SQL PORT
 DB_DATABASE=WEB_DBF
