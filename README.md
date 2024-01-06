@@ -1,16 +1,41 @@
 
-# Community Web 2023
+# InfinityWeb
 
-Our Discord: - [Community Web Discord](https://discord.gg/Ww4ybKqEYT)
+![InfinityWeb](https://i.imgur.com/xzh0vSv.png)
 
-Trello Board: - [Community Web Trello](https://trello.com/b/cmCj5ykK/community-web)
+[InfinityWeb Discord](https://discord.gg/Ww4ybKqEYT) - [InfinityWeb Trello](https://trello.com/b/cmCj5ykK/community-web)
 
-## DE:
-Die Website Community Web 2023 repräsentiert eine innovative und gemeinschaftlich gestaltete Plattform, die sich an die spezifischen Bedürfnisse von Flyff-Serverbetreibern richtet. Entwickelt und kontinuierlich verbessert durch die aktive Mitwirkung ihrer Nutzergemeinschaft, legt sie einen starken Fokus auf das Domain Driven Design (DDD)-Prinzip. Dieser Ansatz gewährleistet eine intuitive und effiziente Nutzung, wobei die Struktur und Funktionen der Website eng an die realen Anforderungen ihrer Zielgruppe angepasst sind. Besonderen Wert legt Community Web 2023 auf Geschwindigkeit und Sicherheit, um eine optimale Online-Erfahrung zu bieten und gleichzeitig die Vertraulichkeit und den Schutz der Benutzerdaten zu gewährleisten. Insgesamt bildet sie eine dynamische und zuverlässige Ressource, die auf die Förderung einer engagierten und gut vernetzten Flyff-Community abzielt.
+---
+
+### InfinityWeb: The Comprehensive and Advanced Platform for Flyff Server Administrators
+
+InfinityWeb is a cutting-edge web solution dedicated to optimizing and enhancing the management of Flyff servers. Packed with innovative features and focused on user-friendliness, performance, and customizability, this platform sets new standards in server administration:
 
 
-## EN:
-The website Community Web 2023 represents an innovative and collaboratively designed platform, specifically tailored to meet the needs of Flyff server operators. Developed and continuously improved through the active participation of its user community, it places a strong emphasis on the Domain Driven Design (DDD) principle. This approach ensures an intuitive and efficient usage, with the website's structure and functionalities closely aligned with the real-world requirements of its target audience. Community Web 2023 places particular importance on speed and security, aiming to provide an optimal online experience while simultaneously ensuring the confidentiality and protection of user data. Overall, it forms a dynamic and reliable resource, focused on fostering a committed and well-connected Flyff community.
+- Intuitive Server Management:
+A sophisticated dashboard offers administrators the ability to effortlessly monitor and control their server activities, simplifying and streamlining daily management tasks.
+
+- Performance-Oriented Design: 
+Understanding the importance of speed and reliability, InfinityWeb is built from the ground up with performance in mind, ensuring that administrators and users enjoy a fast and smooth experience.
+
+- Transaction Management: 
+Thoughtfully integrated modules for purchases and sales provide seamless transaction handling, increasing transparency, and enabling better financial management.
+
+- Diverse Customization Options: 
+An advanced theme system offers endless possibilities for personalization, allowing every aspect of the user interface to meet the specific tastes and needs of users.
+
+- State-of-the-Art Technology: 
+Utilizing Laravel 10, Inertia, and Vue3, InfinityWeb stands at the forefront of modern web development, guaranteeing a future-proof and scalable platform.
+
+- Expandability and Flexibility: 
+Our architecture supports extensions and customizations to meet the ever-changing demands of the Flyff community.
+
+---
+
+As a community-driven project, we place great emphasis on user involvement and feedback. Therefore, we invite all interested Flyff administrators and developers to contribute to the development, share their suggestions via our Discord channel, and actively contribute to the growth and success of this platform. Our ultimate goal is to create a vibrant, innovative, and supportive community dedicated to the continuous improvement and expansion of the InfinityWeb platform.
+
+
+
 # CommunityWeb 2023 Installation Guide
 
 Install and set up CommunityWeb 2023 for Flyff server operators using Composer and NPM.
@@ -24,21 +49,43 @@ These instructions will guide you through the installation process.
 - Git
 - Composer
 - NPM
+- PHP 8.1 or higher with the following extensions:
+    - BCMath
+    - Ctype
+    - Fileinfo
+    - JSON
+    - Mbstring
+    - OpenSSL
+    - PDO
+    - Tokenizer
+    - XML
+    - sql_srv (for SQL Server)
+    - pdo_sqlsrv (for SQL Server)
+  
+
+- SQL Server 2019 or higher
+- A web server (Apache, Nginx, etc.)
+- A Flyff server
+- A database management tool (e.g., SQL Server Management Studio)
+- A text editor or IDE (e.g., Visual Studio Code, Sublime Text, etc.)
+- A terminal (e.g., Git Bash, Windows Terminal, etc.)
+- A web browser (e.g., Chrome, Firefox, etc.)
+
 
 ### Installation Steps
 
 #### Step 1: Clone the Repository
 
-Clone the CommunityWeb 2023 repository from GitHub.
+Clone the InfinityWeb repository from GitHub.
 
 ```bash
-git clone https://github.com/CommunityWeb2023/Flyff-Community-Web.git
+git clone https://github.com/CommunityWeb2023/InfinityWeb.git
 ```
 
 ### Step 2: Install Composer Dependencies
-Navigate to the Flyff-Community-Web directory and install the required Composer dependencies.
+Navigate to the InfinityWeb directory and install the required Composer dependencies.
 ```bash
-cd Flyff-Community-Web
+cd InfinityWeb
 composer install
 ```
 
@@ -68,20 +115,17 @@ DB_PORT=YOUR SQL PORT
 DB_DATABASE=WEB_DBF
 DB_USERNAME=YOUR USER
 DB_PASSWORD=YOUR PASSWORD
-
-FLYFF_DROP_RATE=1
-FLYFF_PENYA_RATE=1
-FLYFF_EXP_RATE=1
 ```
 Replace placeholders like YOUR IP OR SERVER, YOUR SQL PORT, etc., with your actual database and server information.
 
 
 ### Step 7: Run Database Migrations
-Perform database migrations with the following command. This will set up your database schema.
+Perform database migrations with the following command. This will set up your database schema. Before create the database WEB_DBF in your SQL Server.
 ```bash
 php artisan migrate:fresh --seed
 ```
 
+if you has some error with the migration on the table ACCOUNT_TBL at webid column, you need to add this column manually in your ACCOUNT_TBL table.
 
 
 ## Environment Variables
@@ -93,12 +137,9 @@ To run this project, you will need to add the following environment variables to
 `DB_USERNAME=YOUR USER`,
 `DB_PASSWORD=YOUR PASSWORD`
 
-`FLYFF_DROP_RATE=1`,
-`FLYFF_PENYA_RATE=1`,
-`FLYFF_EXP_RATE=1`
-
 
 ## Authors
 
-- [@CommunityWeb2023](https://github.com/CommunityWeb2023)
+- [@CommunityWeb2023](https://github.com/CommunityWeb2023) - CommunityWeb 2023
+- [@momoathome](https://github.com/momoathome) - Maurice
 
