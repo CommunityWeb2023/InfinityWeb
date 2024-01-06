@@ -65,6 +65,7 @@ These instructions will guide you through the installation process.
 
 - SQL Server 2019 or higher
 - A web server (Apache, Nginx, etc.)
+- Meilisearch (as search engine) (Docker image: https://hub.docker.com/r/getmeili/meilisearch / or Windows exe: https://github.com/meilisearch/meilisearch/releases/tag/v1.5.1)  
 - A Flyff server
 - A database management tool (e.g., SQL Server Management Studio)
 - A text editor or IDE (e.g., Visual Studio Code, Sublime Text, etc.)
